@@ -1,8 +1,3 @@
-## My Emacs configuration files
-
-Hi, just started using emacs. Currently learning and using evil-mode.
-
-```
 (require 'package)
 ;; include MELPA repository
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -13,6 +8,4 @@ Hi, just started using emacs. Currently learning and using evil-mode.
 ;; Evil Mode
 (custom-set-variables '(package-selected-packages '(evil)))
 (custom-set-faces)
-
-```
 
