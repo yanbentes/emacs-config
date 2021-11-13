@@ -3,7 +3,6 @@
 Hi, just started using emacs. Currently learning and using evil-mode.
 
 ## Utility Cheat Sheet
-   |---------|-----------------------------------|-------------------|
    | Key     | Function                          | Evil Equivalent   |
    |---------|-----------------------------------|-------------------|
    | C-x C-w | Write Current Buffer              | :write <filename> |
@@ -20,4 +19,3 @@ Hi, just started using emacs. Currently learning and using evil-mode.
    | C-h m   | Get mode-specific information     |                   |
    | M-x     | Emacs Function Call               |                   |
    | C-x C-c | Exit Emacs                        |                   |
-   |---------|-----------------------------------|-------------------|
