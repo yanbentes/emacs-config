@@ -1,0 +1,12 @@
+* My Emacs configuration files
+
+Hi, just started using emacs and those are my configuration files.
+
+Run emacs with startup file that it's not on the '~/' home folder
+
+#+begin_src bash
+
+emacs -q -l ~/path/.emacs
+
+#+begin_src bash
+
