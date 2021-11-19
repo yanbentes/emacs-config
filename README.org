@@ -6,7 +6,13 @@ Hi, just started using emacs and those are my configuration files.
 
 git clone https://github.com/yanbentes/emacs-config.git
 
-emacs -q -l ~/path/.emacs
+#+end_src
+
+To run emacs with the cloned configuration just do
+
+#+begin_src bash
+
+emacs -q -l ~path/emacs-config/.emacs
 
 #+end_src
 
