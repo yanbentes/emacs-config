@@ -1,12 +1,6 @@
-;; disable tool bar
+;; disable tool bar and startup screen
 (tool-bar-mode 0)
-
-;; selected theme
-(custom-set-variables '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
- '(custom-enabled-themes (quote (wombat)))
- '(package-selected-packages (quote (use-package))))
-(custom-set-faces)
+(setq inhibit-startup-screen t)
 
 ;; default packages
 (require 'package)
@@ -17,6 +11,11 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-;; use-package
-;;(require 'use-package)
-;;(setq use-package-always-ensure t)
+(use-package org)
+
+(custom-set-variables
+ '(custom-enabled-themes (quote (gruber-darker)))
+ '(custom-safe-themes
+   (quote
+    ("03e26cd42c3225e6376d7808c946f7bed6382d795618a82c8f3838cd2097a9cc" default))))
+(custom-set-faces)
