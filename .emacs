@@ -1,8 +1,9 @@
-;; disable tool bar and startup screen
 (tool-bar-mode 0)
+(ido-mode 1)
 (setq inhibit-startup-screen t)
+(setq backup-directory-alist '(("." . "~/.emacs-saves/")))
 
-;; default packages
+;; default packages repositories
 (require 'package)
 (setq package-archives '(("elpa"  . "https://elpa.gnu.org/packages/")
 			 ("melpa" . "https://melpa.org/packages/")
@@ -11,11 +12,15 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-(use-package org)
-
 (custom-set-variables
- '(custom-enabled-themes (quote (gruber-darker)))
- '(custom-safe-themes
-   (quote
-    ("03e26cd42c3225e6376d7808c946f7bed6382d795618a82c8f3838cd2097a9cc" default))))
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(custom-enabled-themes (quote (tango-dark)))
+ '(package-selected-packages (quote (smex use-package))))
 (custom-set-faces)
+
+;; smex keybindings
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
