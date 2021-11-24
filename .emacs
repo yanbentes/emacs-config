@@ -1,7 +1,6 @@
 (tool-bar-mode 0)
 (ido-mode 1)
 (setq inhibit-startup-screen t)
-(setq backup-directory-alist '(("." . "~/.emacs-saves/")))
 
 ;; default packages repositories
 (require 'package)
