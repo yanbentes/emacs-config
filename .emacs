@@ -1,6 +1,8 @@
 (tool-bar-mode 0)
 (ido-mode 1)
 (setq inhibit-startup-screen t)
+;; stop creating ~ files
+(setq make-backup-files nil) 
 
 ;; default packages repositories
 (require 'package)
