@@ -16,8 +16,11 @@
 (custom-set-variables
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
- '(custom-enabled-themes (quote (tango-dark)))
- '(package-selected-packages (quote (smex use-package))))
+ '(custom-enabled-themes (quote (monokai)))
+ '(custom-safe-themes
+   (quote
+    ("d9646b131c4aa37f01f909fbdd5a9099389518eb68f25277ed19ba99adeb7279" default)))
+ '(package-selected-packages (quote (monokai-theme smex use-package))))
 (custom-set-faces)
 
 ;; smex keybindings
