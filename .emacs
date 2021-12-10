@@ -20,7 +20,7 @@
  '(custom-safe-themes
    (quote
     ("d9646b131c4aa37f01f909fbdd5a9099389518eb68f25277ed19ba99adeb7279" default)))
- '(package-selected-packages (quote (monokai-theme smex use-package))))
+ '(package-selected-packages (quote (evil monokai-theme smex use-package))))
 (custom-set-faces)
 
 ;; smex keybindings
@@ -28,3 +28,4 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
+(put 'downcase-region 'disabled nil)
