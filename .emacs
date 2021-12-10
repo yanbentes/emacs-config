@@ -14,13 +14,11 @@
   (package-refresh-contents))
 
 (custom-set-variables
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
- '(custom-enabled-themes (quote (monokai)))
+ '(custom-enabled-themes (quote (dracula)))
  '(custom-safe-themes
    (quote
-    ("d9646b131c4aa37f01f909fbdd5a9099389518eb68f25277ed19ba99adeb7279" default)))
- '(package-selected-packages (quote (evil monokai-theme smex use-package))))
+    ("18bec4c258b4b4fb261671cf59197c1c3ba2a7a47cc776915c3e8db3334a0d25" default)))
+ '(package-selected-packages (quote (use-package smex evil dracula-theme))))
 (custom-set-faces)
 
 ;; smex keybindings
@@ -29,3 +27,4 @@
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 (put 'downcase-region 'disabled nil)
+
