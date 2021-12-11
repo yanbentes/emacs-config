@@ -14,10 +14,12 @@
   (package-refresh-contents))
 
 (custom-set-variables
+ '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(custom-enabled-themes (quote (dracula)))
  '(custom-safe-themes
    (quote
     ("18bec4c258b4b4fb261671cf59197c1c3ba2a7a47cc776915c3e8db3334a0d25" default)))
+
  '(package-selected-packages (quote (use-package smex evil dracula-theme))))
 (custom-set-faces)
 
