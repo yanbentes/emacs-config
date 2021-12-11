@@ -2,6 +2,12 @@
 
 Hi, just started using emacs and those are my configuration files.
 
+** Packages installed
+
+- use-package 
+- smex 
+- dracula-theme
+
 #+begin_src bash
 
 git clone https://github.com/yanbentes/emacs-config.git
