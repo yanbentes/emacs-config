@@ -1,6 +1,6 @@
 * My Emacs configuration files
 
-Hi, just started using emacs and those are my configuration files.
+Hi, these are my emacs config files.
 
 ** Packages installed
 
