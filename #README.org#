@@ -1,0 +1,25 @@
+* My Emacs configuration files
+
+Hi, these are my emacs config files.
+
+** Packages installed
+
+- use-package 
+- smex 
+- dracula-theme
+- evil
+
+#+begin_src bash
+
+git clone https://github.com/yanbentes/emacs-config.git
+
+#+end_src
+
+To run emacs with the cloned configuration just do
+
+#+begin_src bash
+
+emacs -q -l ~path/emacs-config/.emacs
+
+#+end_src
+

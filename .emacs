@@ -3,7 +3,8 @@
 (ido-mode 1)
 (setq inhibit-startup-screen t)
 ;; stop creating ~ files
-(setq make-backup-files nil) 
+(setq make-backup-files nil)
+(put 'downcase-region 'disabled nil)
 
 ;; default packages repositories
 (require 'package)
@@ -23,13 +24,16 @@
  '(package-selected-packages (quote (evil use-package smex dracula-theme))))
 (custom-set-faces)
 
-;; smex keybindings
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+;; org mode
+(use-package org
+  :init
+  (setq org-support-shift-select t))
 
-(put 'downcase-region 'disabled nil)
+;; smex keybindings
+(use-package smex
+  :config
+  (global-set-key (kbd "M-x") 'smex)
+  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+  (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command))
 
 ;; evil mode
-(use-package evil
-  :ensure t)
