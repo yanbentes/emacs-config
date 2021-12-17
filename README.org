@@ -11,16 +11,12 @@ Hi, these are my emacs config files.
 - company
 
 #+BEGIN_SRC bash
-
 git clone https://github.com/yanbentes/emacs-config.git
-
 #+END_SRC
 
 To run emacs with the cloned configuration just do
 
 #+BEGIN_SRC 
-
 emacs -q -l ~/path/emacs-config/.emacs
-
 #+END_SRC
 
