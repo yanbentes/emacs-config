@@ -8,18 +8,15 @@ Hi, these are my emacs config files.
 - smex 
 - dracula-theme
 - evil
+- company
 
-#+begin_src bash
+#+BEGIN_SRC bash
 
 git clone https://github.com/yanbentes/emacs-config.git
 
-#+end_src
+#+END_SRC
 
 To run emacs with the cloned configuration just do
 
-#+begin_src bash
-
-emacs -q -l ~path/emacs-config/.emacs
-
-#+end_src
+#+END_SRC
 
