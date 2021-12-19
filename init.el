@@ -1,4 +1,4 @@
-;;  emacs -q -l path/.emacs
+;; my github profile: https://github.com/yanbentes
 
 ;; display startup time
 (defun efs/display-startup-time ()
@@ -9,30 +9,27 @@
            gcs-done))
 (add-hook 'emacs-startup-hook #'efs/display-startup-time)
 
-;; default packages repositories and package inialization
+;; initialize package sources
 (require 'package)
-(setq package-archives '(("elpa"  . "https://elpa.gnu.org/packages/")
-			 ("melpa" . "https://melpa.org/packages/")
-			 ("org"   . "https://orgmode.org/elpa/")))
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+
 (package-initialize)
 (unless package-archive-contents
   (package-refresh-contents))
 
-(custom-set-variables
- '(custom-enabled-themes (quote (dracula)))
- '(custom-safe-themes
-   (quote
-    ("18bec4c258b4b4fb261671cf59197c1c3ba2a7a47cc776915c3e8db3334a0d25" default)))
- '(package-selected-packages (quote (company evil use-package smex dracula-theme))))
-(custom-set-faces)
-
-;; disable tool-bar and enable ido mode
-(tool-bar-mode 0)
-(ido-mode 1)
+(require 'use-package)
+(setq use-package-always-ensure t)
 
 ;; disable startup screen and backup files
 (setq inhibit-startup-screen t)
 (setq make-backup-files nil)
+
+(tool-bar-mode 0)
+(scroll-bar-mode 1)
+(set-fringe-mode 5)
+(ido-mode 1)
 
 ;; make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -40,6 +37,18 @@
 ;; display line numbers
 (column-number-mode)
 (global-display-line-numbers-mode t)
+
+;; Disable line numbers for some modes
+(dolist (mode '(org-mode-hook
+                shell-mode-hook
+                eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+;; dracula theme
+(use-package dracula-theme
+  :ensure t
+  :init
+  (load-theme 'dracula t))
 
 ;; evil mode
 (use-package evil
@@ -58,9 +67,3 @@
   (global-set-key (kbd "M-x") 'smex)
   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
   (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command))
-
-;; autocomplete
-(use-package company
-  :ensure t
-  :init
-  (add-hook 'after-init-hook 'global-company-mode))

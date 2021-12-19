@@ -16,7 +16,7 @@ git clone https://github.com/yanbentes/emacs-config.git
 
 To run emacs with the cloned configuration just do
 
-#+BEGIN_SRC 
-emacs -q -l ~/path/emacs-config/.emacs
+#+BEGIN_SRC
+emacs -q -l file
 #+END_SRC
 
