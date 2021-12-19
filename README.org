@@ -8,7 +8,6 @@ Hi, these are my emacs config files.
 - smex 
 - dracula-theme
 - evil
-- company
 
 #+BEGIN_SRC bash
 git clone https://github.com/yanbentes/emacs-config.git
