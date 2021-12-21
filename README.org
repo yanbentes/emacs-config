@@ -4,10 +4,13 @@ Hi, these are my emacs config files.
 
 ** Packages installed
 
-- use-package 
+- use-package
+- org
 - smex 
 - dracula-theme
 - evil
+- eglot
+- company
 
 #+BEGIN_SRC bash
 git clone https://github.com/yanbentes/emacs-config.git
@@ -16,6 +19,6 @@ git clone https://github.com/yanbentes/emacs-config.git
 To run emacs with the cloned configuration just do
 
 #+BEGIN_SRC
-emacs -q -l file
+emacs -q -l filepath
 #+END_SRC
 

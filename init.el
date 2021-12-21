@@ -67,3 +67,16 @@
   (global-set-key (kbd "M-x") 'smex)
   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
   (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command))
+
+;; eglot lsp client
+(use-package eglot
+  :ensure t
+  :config
+  (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd-10"))
+  (add-hook 'c++-mode-hook 'eglot-ensure))
+
+;; company mode
+(use-package company
+  :ensure t
+  :init
+  (add-hook 'after-init-hook 'global-company-mode))
