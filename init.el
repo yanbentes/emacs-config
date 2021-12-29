@@ -22,6 +22,10 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+(custom-set-variables
+ '(package-selected-packages (quote (eglot use-package smex evil dracula-theme company))))
+(custom-set-faces)
+
 ;; disable startup screen and backup files
 (setq inhibit-startup-screen t)
 (setq make-backup-files nil)
@@ -73,7 +77,9 @@
   :ensure t
   :config
   (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd-10"))
-  (add-hook 'c++-mode-hook 'eglot-ensure))
+  (add-hook 'c++-mode-hook 'eglot-ensure)
+  (add-to-list 'eglot-server-programs '((python-mode) "~/.local/bin/pylsp"))
+  (add-hook 'python-mode-hook 'eglot-ensure))
 
 ;; company mode
 (use-package company
