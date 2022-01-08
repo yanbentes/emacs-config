@@ -8,9 +8,7 @@ Hi, these are my emacs config files.
 - org
 - smex 
 - dracula-theme
-- evil
-- eglot
-- company
+- yasnippet
 
 #+BEGIN_SRC bash
 git clone https://github.com/yanbentes/emacs-config.git

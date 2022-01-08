@@ -78,4 +78,4 @@
   :config
   (setq yas/triggers-in-field nil)
   (setq yas-snippet-dirs '("~/.emacs.d/yasnippets/"))
-  (yas-global-mode 1)
+  (yas-global-mode 1))
