@@ -72,17 +72,10 @@
   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
   (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command))
 
-;; eglot lsp client
-(use-package eglot
+;; yasnippet
+(use-package yasnippet
   :ensure t
   :config
-  (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd-10"))
-  (add-hook 'c++-mode-hook 'eglot-ensure)
-  (add-to-list 'eglot-server-programs '((python-mode) "~/.local/bin/pylsp"))
-  (add-hook 'python-mode-hook 'eglot-ensure))
-
-;; company mode
-(use-package company
-  :ensure t
-  :init
-  (add-hook 'after-init-hook 'global-company-mode))
+  (setq yas/triggers-in-field nil)
+  (setq yas-snippet-dirs '("~/.emacs.d/yasnippets/"))
+  (yas-global-mode 1)
