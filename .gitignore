@@ -3,4 +3,4 @@
 !.gitignore
 !init.el
 !README.org
-!/yasnippets/*-mode/*
+!/yasnippets/*-mode/
