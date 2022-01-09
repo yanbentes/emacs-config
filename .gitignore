@@ -3,4 +3,5 @@
 !.gitignore
 !init.el
 !README.org
-!/yasnippets/*-mode/
+!/yasnippets/
+!/yasnippets/c-mode/main
