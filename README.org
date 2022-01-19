@@ -5,7 +5,6 @@ Hi, these are my emacs config files.
 ** Packages installed
 
 - use-package
-- org
 - smex 
 - dracula-theme
 - yasnippet
