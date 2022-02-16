@@ -6,8 +6,11 @@ Hi, these are my emacs config files.
 
 - use-package
 - smex 
+- evil
 - dracula-theme
 - yasnippet
+- markdown-mode
+- lua-mode
 
 #+BEGIN_SRC bash
 git clone https://github.com/yanbentes/emacs-config.git
