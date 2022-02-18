@@ -4,13 +4,13 @@ Hi, these are my emacs config files.
 
 ** Packages installed
 
-- use-package
 - smex 
-- evil
+- monokai-theme
 - dracula-theme
 - yasnippet
 - markdown-mode
 - lua-mode
+- python-mode
 
 #+BEGIN_SRC bash
 git clone https://github.com/yanbentes/emacs-config.git
