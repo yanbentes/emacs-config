@@ -21,6 +21,8 @@ Hi, these are my emacs config files.
 - lua-mode
 - python-mode
 
+** Run config
+
 #+BEGIN_SRC bash
 git clone https://github.com/yanbentes/emacs-config.git
 #+END_SRC
