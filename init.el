@@ -47,6 +47,7 @@ Missing packages are installed automatically."
 ;; run package installation
 (timu/install-packages)
 
+(add-hook 'window-setup-hook 'toggle-frame-maximized t)
 (setq inhibit-startup-screen t)
 (setq make-backup-files nil)
 
@@ -68,7 +69,11 @@ Missing packages are installed automatically."
 (require 'yasnippet)
 (yas-global-mode 1)
 (setq yas/triggers-in-field nil)
-(setq yas-snippet-dirs '("~/.emacs.d/yasnippets/"))
+(setq yas-snippet-dirs '("~/.emacs.d/snippets/"))
+
+(require 'auto-complete)
+(ac-config-default)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -76,7 +81,7 @@ Missing packages are installed automatically."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (dracula-theme monokai-theme smex markdown-mode lua-mode python-mode yasnippet))))
+    (auto-complete dracula-theme monokai-theme smex markdown-mode lua-mode python-mode yasnippet))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

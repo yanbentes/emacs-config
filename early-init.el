@@ -5,6 +5,7 @@
     markdown-mode
     smex
     monokai-theme
-    dracula-theme)
+    dracula-theme
+    auto-complete)
   "List of packages to be installed for the Emacs config to work as configured")
 

@@ -4,10 +4,19 @@ Hi, these are my emacs config files.
 
 ** Packages installed
 
-- smex 
+*** Themes
+
 - monokai-theme
 - dracula-theme
+
+*** Utils
+
+- smex 
 - yasnippet
+- auto-complete
+
+*** Modes
+
 - markdown-mode
 - lua-mode
 - python-mode
