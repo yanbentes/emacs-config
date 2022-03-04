@@ -20,6 +20,7 @@ Hi, these are my emacs config files.
 - markdown-mode
 - lua-mode
 - python-mode
+- impatient-mode
 
 ** Run config
 
