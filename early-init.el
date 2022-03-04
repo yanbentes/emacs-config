@@ -6,6 +6,7 @@
     smex
     monokai-theme
     dracula-theme
-    auto-complete)
+    auto-complete
+    impatient-mode)
   "List of packages to be installed for the Emacs config to work as configured")
 
