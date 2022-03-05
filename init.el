@@ -53,10 +53,20 @@ Missing packages are installed automatically."
 
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
-(set-fringe-mode 5)
+(set-fringe-mode 0)
 (ido-mode 1)
 
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
+;; display line numbers
+(column-number-mode)
+(global-display-line-numbers-mode t)
+
+;; Disable line numbers for some modes
+(dolist (mode '(org-mode-hook
+                shell-mode-hook
+                eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 (load-theme 'monokai t)
 ;; (load-theme 'dracula t)
