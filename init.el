@@ -68,8 +68,8 @@ Missing packages are installed automatically."
                 eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
-(load-theme 'monokai t)
-;; (load-theme 'dracula t)
+;; (load-theme 'monokai t)
+(load-theme 'dracula t)
 
 (require 'smex)
 (global-set-key (kbd "M-x") 'smex)
