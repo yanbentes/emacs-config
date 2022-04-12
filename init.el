@@ -52,6 +52,7 @@ Missing packages are installed automatically."
 (setq make-backup-files nil)
 
 (tool-bar-mode 0)
+(menu-bar-mode 0)
 (scroll-bar-mode 0)
 (set-fringe-mode 0)
 (ido-mode 1)
@@ -93,3 +94,17 @@ Missing packages are installed automatically."
   (princ (with-current-buffer buffer
     (format "<!DOCTYPE html><html><title>Impatient Markdown</title><xmp theme=\"united\" style=\"display:none;\"> %s  </xmp><script src=\"http://strapdownjs.com/v/0.2/strapdown.js\"></script></html>" (buffer-substring-no-properties (point-min) (point-max))))
   (current-buffer)))
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(impatient-mode auto-complete dracula-theme monokai-theme smex markdown-mode lua-mode python-mode yasnippet)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
