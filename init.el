@@ -60,17 +60,13 @@ Missing packages are installed automatically."
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 ;; display line numbers
+(line-number-mode)
 (column-number-mode)
-(global-display-line-numbers-mode t)
-
-;; Disable line numbers for some modes
-(dolist (mode '(org-mode-hook
-                shell-mode-hook
-                eshell-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+;; (global-display-line-numbers-mode t)
 
 ;; (load-theme 'monokai t)
-(load-theme 'dracula t)
+;; (load-theme 'dracula t)
+(load-theme 'gruber-darker t)
 
 (require 'smex)
 (global-set-key (kbd "M-x") 'smex)
@@ -93,4 +89,4 @@ Missing packages are installed automatically."
 (defun markdown-html (buffer)
   (princ (with-current-buffer buffer
     (format "<!DOCTYPE html><html><title>Impatient Markdown</title><xmp theme=\"united\" style=\"display:none;\"> %s  </xmp><script src=\"http://strapdownjs.com/v/0.2/strapdown.js\"></script></html>" (buffer-substring-no-properties (point-min) (point-max))))
-  (current-buffer)))
+	 (current-buffer)))

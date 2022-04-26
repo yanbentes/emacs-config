@@ -8,6 +8,7 @@ Hi, these are my emacs config files.
 
 - monokai-theme
 - dracula-theme
+- grub-darker-theme
 
 *** Utils
 
