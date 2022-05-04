@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name : while ... done
-# key : while
+# name: bash while
+# key: while
 # --
 while [[ ${1:condition} ]]; do
   ${0:statements}

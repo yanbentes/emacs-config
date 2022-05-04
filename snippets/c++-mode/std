@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: using namespace std;
+# name: using namespace std
 # key: uns
 # --
 using namespace std;
