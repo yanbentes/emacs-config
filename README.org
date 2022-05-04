@@ -15,6 +15,7 @@ Hi, these are my emacs config files.
 - smex 
 - yasnippet
 - auto-complete
+- dired-sidebar
 
 *** Modes
 
@@ -22,7 +23,7 @@ Hi, these are my emacs config files.
 - lua-mode
 - python-mode
 - impatient-mode
-
+  
 ** Run config
 
 #+BEGIN_SRC bash
@@ -32,6 +33,6 @@ git clone https://github.com/yanbentes/emacs-config.git
 To run emacs with the cloned configuration just do
 
 #+BEGIN_SRC
-emacs -q -l filepath
+emacs -q -l path/init.el
 #+END_SRC
 

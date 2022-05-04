@@ -8,6 +8,7 @@
     dracula-theme
     gruber-darker-theme
     auto-complete
-    impatient-mode)
+    impatient-mode
+    dired-sidebar)
   "List of packages to be installed for the Emacs config to work as configured")
 

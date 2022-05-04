@@ -59,7 +59,6 @@ Missing packages are installed automatically."
 
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
-;; display line numbers
 (line-number-mode)
 (column-number-mode)
 ;; (global-display-line-numbers-mode t)
@@ -85,8 +84,12 @@ Missing packages are installed automatically."
 ;; M-x httpd-start
 ;; M-x impatient-mode
 ;; M-x imp-set-user-filter RET markdown-html RET
+;; url is localhost:8080/imp
 (require 'impatient-mode)
 (defun markdown-html (buffer)
   (princ (with-current-buffer buffer
     (format "<!DOCTYPE html><html><title>Impatient Markdown</title><xmp theme=\"united\" style=\"display:none;\"> %s  </xmp><script src=\"http://strapdownjs.com/v/0.2/strapdown.js\"></script></html>" (buffer-substring-no-properties (point-min) (point-max))))
 	 (current-buffer)))
+
+(require 'dired-sidebar)
+(global-set-key (kbd "C-x C-n") 'dired-sidebar-toggle-with-current-directory)
