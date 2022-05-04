@@ -1,6 +1,8 @@
 ;; https://github.com/yanbentes
 (package-initialize)
 
+(add-hook 'window-setup-hook 'toggle-frame-maximized t)
+
 (load "~/.emacs.d/early-init.el")
 
 ;; display startup time
@@ -47,7 +49,6 @@ Missing packages are installed automatically."
 ;; run package installation
 (timu/install-packages)
 
-(add-hook 'window-setup-hook 'toggle-frame-maximized t)
 (setq inhibit-startup-screen t)
 (setq make-backup-files nil)
 
@@ -93,3 +94,39 @@ Missing packages are installed automatically."
 
 (require 'dired-sidebar)
 (global-set-key (kbd "C-x C-n") 'dired-sidebar-toggle-with-current-directory)
+
+;; select line
+(defun select-current-line ()
+  "Select the current line"
+  (interactive)
+  (end-of-line) ; move to end of line
+  (set-mark (line-beginning-position)))
+
+(global-set-key (kbd "C-L") 'select-current-line)
+
+;; move lines up and down
+(defun move-line (n)
+  "Move the current line up or down by N lines."
+  (interactive "p")
+  (setq col (current-column))
+  (beginning-of-line) (setq start (point))
+  (end-of-line) (forward-char) (setq end (point))
+  (let ((line-text (delete-and-extract-region start end)))
+    (forward-line n)
+    (insert line-text)
+    ;; restore point to original column in moved line
+    (forward-line -1)
+    (forward-char col)))
+
+(defun move-line-up (n)
+  "Move the current line up by N lines."
+  (interactive "p")
+  (move-line (if (null n) -1 (- n))))
+
+(defun move-line-down (n)
+  "Move the current line down by N lines."
+  (interactive "p")
+  (move-line (if (null n) 1 n)))
+
+(global-set-key (kbd "M-<up>") 'move-line-up)
+(global-set-key (kbd "M-<down>") 'move-line-down)

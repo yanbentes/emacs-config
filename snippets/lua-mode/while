@@ -1,7 +1,7 @@
 # -*- mode: snippet -*-
-# name: while
+# name: lua while
 # key: while
 # --
-while(${1:condition}){
-$0
-}
+while $1 do
+   $0
+end
