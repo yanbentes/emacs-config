@@ -58,8 +58,6 @@ Missing packages are installed automatically."
 (set-fringe-mode 0)
 (ido-mode 1)
 
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
 (line-number-mode)
 (column-number-mode)
 ;; (global-display-line-numbers-mode t)
@@ -102,8 +100,6 @@ Missing packages are installed automatically."
   (end-of-line) ; move to end of line
   (set-mark (line-beginning-position)))
 
-(global-set-key (kbd "C-L") 'select-current-line)
-
 ;; move lines up and down
 (defun move-line (n)
   "Move the current line up or down by N lines."
@@ -128,5 +124,11 @@ Missing packages are installed automatically."
   (interactive "p")
   (move-line (if (null n) 1 n)))
 
+(require 'beacon)
+(beacon-mode 1)
+
+;; custon keybindings
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+(global-set-key (kbd "C-L") 'select-current-line)
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)

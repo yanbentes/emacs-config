@@ -16,6 +16,7 @@ Hi, these are my emacs config files.
 - yasnippet
 - auto-complete
 - dired-sidebar
+- beacon
 
 *** Modes
 
