@@ -88,10 +88,20 @@ Missing packages are installed automatically."
 (scroll-bar-mode 0)
 (set-fringe-mode 0)
 (ido-mode 1)
-
 (line-number-mode)
 (column-number-mode)
-;; (global-display-line-numbers-mode t)
+(global-display-line-numbers-mode 0)
+
+;; Disable line numbers for some modes
+;; (dolist (mode '(org-mode-hook
+;;                 shell-mode-hook
+;;                 eshell-mode-hook))
+;;   (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+;; diable company-mode on shell
+(dolist (mode '(shell-mode-hook
+                eshell-mode-hook))
+  (add-hook mode (lambda () (company-mode 0))))
 
 ;; themes installed
 ;; (load-theme 'monokai t)
