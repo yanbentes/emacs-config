@@ -1,4 +1,3 @@
-;; https://github.com/yanbentes
 (package-initialize)
 
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
@@ -49,50 +48,6 @@ Missing packages are installed automatically."
 ;; run package installation
 (timu/install-packages)
 
-(setq inhibit-startup-screen t)
-(setq make-backup-files nil)
-
-(tool-bar-mode 0)
-(menu-bar-mode 0)
-(scroll-bar-mode 0)
-(set-fringe-mode 0)
-(ido-mode 1)
-
-(line-number-mode)
-(column-number-mode)
-;; (global-display-line-numbers-mode t)
-
-;; (load-theme 'monokai t)
-;; (load-theme 'dracula t)
-(load-theme 'gruber-darker t)
-
-(require 'smex)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-
-(require 'yasnippet)
-(yas-global-mode 1)
-(setq yas/triggers-in-field nil)
-(setq yas-snippet-dirs '("~/.emacs.d/snippets/"))
-
-(require 'auto-complete)
-(ac-config-default)
-
-;; to use impatient mode with markdown preview do
-;; M-x httpd-start
-;; M-x impatient-mode
-;; M-x imp-set-user-filter RET markdown-html RET
-;; url is localhost:8080/imp
-(require 'impatient-mode)
-(defun markdown-html (buffer)
-  (princ (with-current-buffer buffer
-    (format "<!DOCTYPE html><html><title>Impatient Markdown</title><xmp theme=\"united\" style=\"display:none;\"> %s  </xmp><script src=\"http://strapdownjs.com/v/0.2/strapdown.js\"></script></html>" (buffer-substring-no-properties (point-min) (point-max))))
-	 (current-buffer)))
-
-(require 'dired-sidebar)
-(global-set-key (kbd "C-x C-n") 'dired-sidebar-toggle-with-current-directory)
-
 ;; select line
 (defun select-current-line ()
   "Select the current line"
@@ -124,11 +79,75 @@ Missing packages are installed automatically."
   (interactive "p")
   (move-line (if (null n) 1 n)))
 
-(require 'beacon)
-(beacon-mode 1)
+;; cleaning emacs look
+(setq inhibit-startup-screen t)
+(setq make-backup-files nil)
+
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+(scroll-bar-mode 0)
+(set-fringe-mode 0)
+(ido-mode 1)
+
+(line-number-mode)
+(column-number-mode)
+;; (global-display-line-numbers-mode t)
+
+;; themes installed
+;; (load-theme 'monokai t)
+;; (load-theme 'dracula t)
+(load-theme 'gruber-darker t)
+
+;; packages configuration
+(require 'smex)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+(require 'yasnippet)
+(yas-global-mode 1)
+(setq yas/triggers-in-field nil)
+(setq yas-snippet-dirs '("~/.emacs.d/snippets/"))
+
+;; to use impatient mode with markdown preview do
+;; M-x httpd-start
+;; M-x impatient-mode
+;; M-x imp-set-user-filter RET markdown-html RET
+;; url is localhost:8080/imp
+ (require 'impatient-mode)
+(defun markdown-html (buffer)
+  (princ (with-current-buffer buffer
+    (format "<!DOCTYPE html><html><title>Impatient Markdown</title><xmp theme=\"united\" style=\"display:none;\"> %s  </xmp><script src=\"http://strapdownjs.com/v/0.2/strapdown.js\"></script></html>" (buffer-substring-no-properties (point-min) (point-max))))
+	 (current-buffer)))
+
+(require 'dired-sidebar)
+(global-set-key (kbd "C-x C-n") 'dired-sidebar-toggle-with-current-directory)
+
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+
+(require 'company-tabnine)
+(add-to-list 'company-backends #'company-tabnine)
+(setq company-idle-delay 0)
+(setq company-show-numbers t)
 
 ;; custon keybindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-(global-set-key (kbd "C-L") 'select-current-line)
+(global-set-key (kbd "C-l") 'select-current-line)
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ispell-dictionary nil)
+ '(package-selected-packages
+   '(auto-complete company-tabnine company cmake-mode yasnippet smex python-mode monokai-theme markdown-mode lua-mode impatient-mode gruber-darker-theme dracula-theme dired-sidebar)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

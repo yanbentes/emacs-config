@@ -9,7 +9,6 @@
     gruber-darker-theme
     auto-complete
     impatient-mode
-    dired-sidebar
-    beacon)
+    dired-sidebar)
   "List of packages to be installed for the Emacs config to work as configured")
 

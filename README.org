@@ -16,7 +16,7 @@ Hi, these are my emacs config files.
 - yasnippet
 - auto-complete
 - dired-sidebar
-- beacon
+- company-tabnine
 
 *** Modes
 
@@ -24,3 +24,4 @@ Hi, these are my emacs config files.
 - lua-mode
 - python-mode
 - impatient-mode
+- company-mode
