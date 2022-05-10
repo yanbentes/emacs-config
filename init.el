@@ -79,7 +79,15 @@ Missing packages are installed automatically."
   (interactive "p")
   (move-line (if (null n) 1 n)))
 
-;; cleaning emacs look
+  (defun check-expansion ()
+    (save-excursion
+      (if (looking-at "\\_>") t
+        (backward-char 1)
+        (if (looking-at "\\.") t
+          (backward-char 1)
+          (if (looking-at "->") t nil)))))
+
+;; emacs gui
 (setq inhibit-startup-screen t)
 (setq make-backup-files nil)
 
@@ -92,13 +100,13 @@ Missing packages are installed automatically."
 (column-number-mode)
 (global-display-line-numbers-mode 0)
 
-;; Disable line numbers for some modes
+;; disable line numbers for some modes
 ;; (dolist (mode '(org-mode-hook
 ;;                 shell-mode-hook
 ;;                 eshell-mode-hook))
 ;;   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
-;; diable company-mode on shell
+;; disable company-mode on shell
 (dolist (mode '(shell-mode-hook
                 eshell-mode-hook))
   (add-hook mode (lambda () (company-mode 0))))
@@ -141,11 +149,14 @@ Missing packages are installed automatically."
 (setq company-idle-delay 0)
 (setq company-show-numbers t)
 
-;; custon keybindings
+;; custon keybindingsn
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (global-set-key (kbd "C-l") 'select-current-line)
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)
+
+;; changed yas key to avoid conflict with company-mode
+(define-key yas-minor-mode-map (kbd "C-f y") #'yas-expand)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -154,7 +165,7 @@ Missing packages are installed automatically."
  ;; If there is more than one, they won't work right.
  '(ispell-dictionary nil)
  '(package-selected-packages
-   '(auto-complete company-tabnine company cmake-mode yasnippet smex python-mode monokai-theme markdown-mode lua-mode impatient-mode gruber-darker-theme dracula-theme dired-sidebar)))
+   '(company-tabnine company yasnippet smex python-mode monokai-theme markdown-mode lua-mode impatient-mode gruber-darker-theme dracula-theme dired-sidebar)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
