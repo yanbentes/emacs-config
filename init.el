@@ -90,21 +90,14 @@ Missing packages are installed automatically."
 ;; emacs gui
 (setq inhibit-startup-screen t)
 (setq make-backup-files nil)
-
 (tool-bar-mode 0)
 (menu-bar-mode 0)
-(scroll-bar-mode 0)
+(scroll-bar-mode 1)
 (set-fringe-mode 0)
 (ido-mode 1)
 (line-number-mode)
 (column-number-mode)
 (global-display-line-numbers-mode 0)
-
-;; disable line numbers for some modes
-;; (dolist (mode '(org-mode-hook
-;;                 shell-mode-hook
-;;                 eshell-mode-hook))
-;;   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; disable company-mode on shell
 (dolist (mode '(shell-mode-hook
@@ -132,7 +125,7 @@ Missing packages are installed automatically."
 ;; M-x impatient-mode
 ;; M-x imp-set-user-filter RET markdown-html RET
 ;; url is localhost:8080/imp
- (require 'impatient-mode)
+(require 'impatient-mode)
 (defun markdown-html (buffer)
   (princ (with-current-buffer buffer
     (format "<!DOCTYPE html><html><title>Impatient Markdown</title><xmp theme=\"united\" style=\"display:none;\"> %s  </xmp><script src=\"http://strapdownjs.com/v/0.2/strapdown.js\"></script></html>" (buffer-substring-no-properties (point-min) (point-max))))
@@ -156,19 +149,10 @@ Missing packages are installed automatically."
 (global-set-key (kbd "M-<down>") 'move-line-down)
 
 ;; changed yas key to avoid conflict with company-mode
-(define-key yas-minor-mode-map (kbd "C-f y") #'yas-expand)
+(define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(ispell-dictionary nil)
  '(package-selected-packages
    '(company-tabnine company yasnippet smex python-mode monokai-theme markdown-mode lua-mode impatient-mode gruber-darker-theme dracula-theme dired-sidebar)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(custom-set-faces)
