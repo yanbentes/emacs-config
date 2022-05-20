@@ -133,7 +133,7 @@ Missing packages are installed automatically."
 (require 'keycast)
 ;; (keycast-mode)
 
-;; custon keybindingsn
+;; custom keybindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)
