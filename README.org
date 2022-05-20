@@ -2,4 +2,4 @@
 
 Hi, these are my emacs config files.
 
-`GNU Emacs 27.1`
+~GNU Emacs 27.1~
