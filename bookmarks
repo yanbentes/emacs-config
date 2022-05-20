@@ -1,0 +1,20 @@
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("snippets"
+ (filename . "~/.emacs.d/snippets/")
+ (front-context-string . "c-like-sintax\n  ")
+ (rear-context-string . "96 mai 16 17:30 ")
+ (position . 209))
+("init"
+ (filename . "~/.emacs.d/init.el")
+ (front-context-string . "\n\n(add-hook 'win")
+ (rear-context-string . "kage-initialize)")
+ (position . 21))
+("ufsc"
+ (filename . "~/Documents/ufsc/")
+ (front-context-string . "2019.1\n  drwxrwx")
+ (rear-context-string . "96 mai 11 18:48 ")
+ (position . 216))
+)

@@ -2,26 +2,4 @@
 
 Hi, these are my emacs config files.
 
-** Packages installed
-
-*** Themes
-
-- monokai-theme
-- dracula-theme
-- grub-darker-theme
-
-*** Utils
-
-- smex 
-- yasnippet
-- auto-complete
-- dired-sidebar
-- company-tabnine
-
-*** Modes
-
-- markdown-mode
-- lua-mode
-- python-mode
-- impatient-mode
-- company-mode
+`GNU Emacs 27.1`

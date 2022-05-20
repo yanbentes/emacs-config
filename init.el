@@ -48,7 +48,6 @@ Missing packages are installed automatically."
 ;; run package installation
 (timu/install-packages)
 
-;; select line
 (defun select-current-line ()
   "Select the current line"
   (interactive)
@@ -120,39 +119,24 @@ Missing packages are installed automatically."
 (setq yas/triggers-in-field nil)
 (setq yas-snippet-dirs '("~/.emacs.d/snippets/"))
 
-;; to use impatient mode with markdown preview do
-;; M-x httpd-start
-;; M-x impatient-mode
-;; M-x imp-set-user-filter RET markdown-html RET
-;; url is localhost:8080/imp
-(require 'impatient-mode)
-(defun markdown-html (buffer)
-  (princ (with-current-buffer buffer
-    (format "<!DOCTYPE html><html><title>Impatient Markdown</title><xmp theme=\"united\" style=\"display:none;\"> %s  </xmp><script src=\"http://strapdownjs.com/v/0.2/strapdown.js\"></script></html>" (buffer-substring-no-properties (point-min) (point-max))))
-	 (current-buffer)))
-
 (require 'dired-sidebar)
 (global-set-key (kbd "C-x C-n") 'dired-sidebar-toggle-with-current-directory)
 
 (require 'company)
-(add-hook 'after-init-hook 'global-company-mode)
+;; (add-hook 'after-init-hook 'global-company-mode)
 
 (require 'company-tabnine)
 (add-to-list 'company-backends #'company-tabnine)
 (setq company-idle-delay 0)
 (setq company-show-numbers t)
 
+(require 'keycast)
+;; (keycast-mode)
+
 ;; custon keybindingsn
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-(global-set-key (kbd "C-l") 'select-current-line)
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)
 
 ;; changed yas key to avoid conflict with company-mode
 (define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
-
-(custom-set-variables
- '(ispell-dictionary nil)
- '(package-selected-packages
-   '(company-tabnine company yasnippet smex python-mode monokai-theme markdown-mode lua-mode impatient-mode gruber-darker-theme dracula-theme dired-sidebar)))
-(custom-set-faces)
