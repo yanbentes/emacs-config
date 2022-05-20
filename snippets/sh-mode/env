@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: shell
+# key: #!
+# --
+#!/bin/`(file-name-nondirectory (getenv "SHELL"))`

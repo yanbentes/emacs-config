@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: lua repeat
+# key: repeat
+# --
+repeat
+	$1
+until $0

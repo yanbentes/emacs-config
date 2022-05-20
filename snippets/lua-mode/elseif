@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: lua elseif
+# key: elseif
+# --
+elseif $1 then
+   $0
+$2
+   
