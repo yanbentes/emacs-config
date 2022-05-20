@@ -2,4 +2,12 @@
 
 Hi, these are my emacs config files.
 
+*** Estructure
+
+- =early-init.el= List the packages to be installed for the Emacs config to work
+
+- =init.el= Install listed packages automatically, configure packages and gui elements
+
+- =snippets folder= Contain the yasnippet snippets
+
 ~GNU Emacs 27.1~
