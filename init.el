@@ -1,7 +1,3 @@
-(package-initialize)
-
-(add-hook 'window-setup-hook 'toggle-frame-maximized t)
-
 (load "~/.emacs.d/early-init.el")
 
 ;; display startup time
@@ -11,6 +7,7 @@
                    (float-time
 		    (time-subtract after-init-time before-init-time)))
            gcs-done))
+
 (add-hook 'emacs-startup-hook #'efs/display-startup-time)
 
 (require 'package)
@@ -87,12 +84,13 @@ Missing packages are installed automatically."
           (if (looking-at "->") t nil)))))
 
 ;; emacs gui
+(add-hook 'window-setup-hook 'toggle-frame-maximized t)
 (setq inhibit-startup-screen t)
 (setq make-backup-files nil)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 1)
-(set-fringe-mode 0)
+(set-fringe-mode 10)
 (ido-mode 1)
 (line-number-mode)
 (column-number-mode)
@@ -107,6 +105,7 @@ Missing packages are installed automatically."
 ;; (load-theme 'monokai t)
 ;; (load-theme 'dracula t)
 (load-theme 'gruber-darker t)
+;; (load-theme 'badwolf t)
 
 ;; packages configuration
 (require 'smex)
@@ -140,3 +139,16 @@ Missing packages are installed automatically."
 
 ;; changed yas key to avoid conflict with company-mode
 (define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(cmake-mode yasnippet smex python-mode monokai-theme markdown-mode lua-mode keycast gruber-darker-theme dracula-theme dired-sidebar company-tabnine badwolf-theme)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
