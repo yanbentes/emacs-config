@@ -130,7 +130,12 @@ Missing packages are installed automatically."
 (setq company-show-numbers t)
 
 (require 'keycast)
-;; (keycast-mode)
+(keycast-mode)
+(set-face-attribute 'keycast-key nil
+                    :weight 'normal
+                    :box nil
+                    :foreground "000"
+                    :background  "#1c1c1c"))
 
 ;; custom keybindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -139,16 +144,3 @@ Missing packages are installed automatically."
 
 ;; changed yas key to avoid conflict with company-mode
 (define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(cmake-mode yasnippet smex python-mode monokai-theme markdown-mode lua-mode keycast gruber-darker-theme dracula-theme dired-sidebar company-tabnine badwolf-theme)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
