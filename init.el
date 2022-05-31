@@ -45,11 +45,8 @@ Missing packages are installed automatically."
 ;; run package installation
 (timu/install-packages)
 
-(defun select-current-line ()
-  "Select the current line"
-  (interactive)
-  (end-of-line) ; move to end of line
-  (set-mark (line-beginning-position)))
+;; custom set variables and faces file
+(setq custom-file (concat user-emacs-directory "/custom.el"))
 
 ;; move lines up and down
 (defun move-line (n)
@@ -101,7 +98,6 @@ Missing packages are installed automatically."
                 eshell-mode-hook))
   (add-hook mode (lambda () (company-mode 0))))
 
-;; themes installed
 ;; (load-theme 'monokai t)
 ;; (load-theme 'dracula t)
 (load-theme 'gruber-darker t)
@@ -127,17 +123,17 @@ Missing packages are installed automatically."
 (require 'company-tabnine)
 (add-to-list 'company-backends #'company-tabnine)
 (setq company-idle-delay 0)
-(setq company-show-numbers t)
+(setq company-show-numbers nil)
 
 (require 'keycast)
-(keycast-mode)
+;; (keycast-mode)
 (set-face-attribute 'keycast-key nil
                     :weight 'normal
                     :box nil
                     :foreground "000"
-                    :background  "#1c1c1c"))
+                    :background  "#1c1c1c")
 
-;; custom keybindings
+;; custom keybindings\
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)

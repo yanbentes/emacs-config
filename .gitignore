@@ -4,5 +4,6 @@
 !.gitignore
 !early-init.el
 !init.el
+!custom.el
 !/snippets/
 !README.org

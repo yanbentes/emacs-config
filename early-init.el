@@ -11,6 +11,7 @@
     dired-sidebar
     company
     company-tabnine
-    keycast)
+    keycast
+    auctex)
   "List of packages to be installed for the Emacs config to work as configured")
 
