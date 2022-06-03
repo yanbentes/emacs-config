@@ -3,11 +3,11 @@
     yasnippet
     python-mode
     lua-mode
+    rainbow-mode
     markdown-mode
     monokai-theme
     dracula-theme
     gruber-darker-theme
-    badwolf-theme
     dired-sidebar
     company
     company-tabnine

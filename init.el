@@ -1,5 +1,3 @@
-(load "~/.emacs.d/early-init.el")
-
 ;; display startup time
 (defun efs/display-startup-time ()
   (message "Emacs loaded in %s with %d garbage collections."
@@ -9,6 +7,8 @@
            gcs-done))
 
 (add-hook 'emacs-startup-hook #'efs/display-startup-time)
+
+(load "~/.emacs.d/early-init.el")
 
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
@@ -45,65 +45,40 @@ Missing packages are installed automatically."
 ;; run package installation
 (timu/install-packages)
 
-;; custom set variables and faces file
-(setq custom-file (concat user-emacs-directory "/custom.el"))
+;; custom variables in a different file
+(setq custom-file (concat user-emacs-directory "custom.el"))
+(when (file-exists-p custom-file)
+  (load custom-file))
 
 ;; move lines up and down
-(defun move-line (n)
-  "Move the current line up or down by N lines."
-  (interactive "p")
-  (setq col (current-column))
-  (beginning-of-line) (setq start (point))
-  (end-of-line) (forward-char) (setq end (point))
-  (let ((line-text (delete-and-extract-region start end)))
-    (forward-line n)
-    (insert line-text)
-    ;; restore point to original column in moved line
-    (forward-line -1)
-    (forward-char col)))
+(defun move-line-up ()
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2))
 
-(defun move-line-up (n)
-  "Move the current line up by N lines."
-  (interactive "p")
-  (move-line (if (null n) -1 (- n))))
-
-(defun move-line-down (n)
-  "Move the current line down by N lines."
-  (interactive "p")
-  (move-line (if (null n) 1 n)))
-
-  (defun check-expansion ()
-    (save-excursion
-      (if (looking-at "\\_>") t
-        (backward-char 1)
-        (if (looking-at "\\.") t
-          (backward-char 1)
-          (if (looking-at "->") t nil)))))
+(defun move-line-down ()
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1))
 
 ;; emacs gui
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 (setq inhibit-startup-screen t)
-(setq make-backup-files nil)
-(tool-bar-mode 0)
-(menu-bar-mode 0)
+(setq make-backup-files -1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
 (scroll-bar-mode 1)
 (set-fringe-mode 10)
 (ido-mode 1)
 (line-number-mode)
 (column-number-mode)
-(global-display-line-numbers-mode 0)
-
-;; disable company-mode on shell
-(dolist (mode '(shell-mode-hook
-                eshell-mode-hook))
-  (add-hook mode (lambda () (company-mode 0))))
+(global-display-line-numbers-mode -1)
 
 ;; (load-theme 'monokai t)
 ;; (load-theme 'dracula t)
 (load-theme 'gruber-darker t)
-;; (load-theme 'badwolf t)
 
-;; packages configuration
 (require 'smex)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
@@ -123,20 +98,22 @@ Missing packages are installed automatically."
 (require 'company-tabnine)
 (add-to-list 'company-backends #'company-tabnine)
 (setq company-idle-delay 0)
-(setq company-show-numbers nil)
+(setq company-show-numbers t)
 
 (require 'keycast)
-;; (keycast-mode)
+;; (keycast-mode t)
 (set-face-attribute 'keycast-key nil
                     :weight 'normal
                     :box nil
-                    :foreground "000"
+                    :foreground "#FFF"
                     :background  "#1c1c1c")
 
-;; custom keybindings\
+(require 'rainbow-mode)
+(rainbow-mode)
+
+(setq org-support-shift-select 'always)
+
+;; custom keybindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)
-
-;; changed yas key to avoid conflict with company-mode
-(define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
