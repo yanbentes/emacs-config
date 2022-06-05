@@ -12,8 +12,10 @@
 
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                         ("org" . "https://orgmode.org/elpa/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")))
+                         ("elpa" . "https://elpa.gnu.org/packages/")
+			 ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
+
+(package-initialize)
 
 ;; setup package installation
 (defun timu/packages-installed-p ()
@@ -71,8 +73,8 @@ Missing packages are installed automatically."
 (scroll-bar-mode 1)
 (set-fringe-mode 10)
 (ido-mode 1)
-(line-number-mode)
-(column-number-mode)
+(line-number-mode 1)
+(column-number-mode 1)
 (global-display-line-numbers-mode -1)
 
 ;; (load-theme 'monokai t)
@@ -98,7 +100,7 @@ Missing packages are installed automatically."
 (require 'company-tabnine)
 (add-to-list 'company-backends #'company-tabnine)
 (setq company-idle-delay 0)
-(setq company-show-numbers t)
+(setq company-show-numbers nil)
 
 (require 'keycast)
 ;; (keycast-mode t)
@@ -109,11 +111,17 @@ Missing packages are installed automatically."
                     :background  "#1c1c1c")
 
 (require 'rainbow-mode)
-(rainbow-mode)
+(rainbow-mode 1)
 
+(require 'evil)
+;; (evil-mode 1)
+
+;; TODO org config
+(require 'org)
+(require 'org-contrib)
 (setq org-support-shift-select 'always)
 
-;; custom keybindings
+;; other keybindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)

@@ -10,5 +10,4 @@ Hi, these are my emacs config files.
 
 - =snippets folder= Contains the yasnippet snippets
 
-
 ~GNU Emacs 27.1~

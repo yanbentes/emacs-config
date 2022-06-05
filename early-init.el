@@ -1,5 +1,8 @@
 (defvar timu-package-list
-  '(smex
+  '(org
+    org-contrib
+    smex
+    evil
     yasnippet
     python-mode
     lua-mode
