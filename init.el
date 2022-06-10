@@ -1,3 +1,11 @@
+;; minimize garbage collection during startup
+(setq gc-cons-threshold most-positive-fixnum)
+
+;; lower threshold back to 8 MiB (default is 800kB)
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (setq gc-cons-threshold (expt 2 23))))
+
 ;; display startup time
 (defun efs/display-startup-time ()
   (message "Emacs loaded in %s with %d garbage collections."
@@ -119,7 +127,10 @@ Missing packages are installed automatically."
 ;; TODO org config
 (require 'org)
 (require 'org-contrib)
-(setq org-support-shift-select 'always)
+(setq org-startup-indented t)
+
+(require 'doom-modeline)
+(doom-modeline-mode 1)
 
 ;; other keybindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
