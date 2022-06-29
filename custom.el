@@ -4,6 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(compilation-message-face 'default)
+ '(doom-modeline-mode t)
  '(fci-rule-color "#3C3D37")
  '(frame-brackground-mode 'dark)
  '(highlight-changes-colors '("#FD5FF0" "#AE81FF"))
@@ -19,7 +20,7 @@
  '(ispell-dictionary nil)
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
-   '(doom-modeline org org-contrib evil rainbow-mode auctex cmake-mode yasnippet smex python-mode monokai-theme markdown-mode lua-mode keycast gruber-darker-theme dracula-theme dired-sidebar company-tabnine))
+   '(dumb-jump doom-modeline org org-contrib rainbow-mode auctex cmake-mode yasnippet smex python-mode monokai-theme markdown-mode lua-mode gruber-darker-theme dracula-theme dired-sidebar))
  '(pos-tip-background-color "#FFFACE")
  '(pos-tip-foreground-color "#272822")
  '(vc-annotate-background nil)

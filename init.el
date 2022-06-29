@@ -72,18 +72,29 @@ Missing packages are installed automatically."
   (transpose-lines 1)
   (forward-line -1))
 
+;; case sensitive replace string
+(defun with-case-fold-search (orig-fun &rest args)
+  (let ((case-fold-search t))
+    (apply orig-fun args)))
+
+(advice-add 'replace-string :around #'with-case-fold-search)
+
 ;; emacs gui
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
-(setq inhibit-startup-screen t)
-(setq make-backup-files -1)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
+(tool-bar-mode 0)
+(menu-bar-mode 0)
 (scroll-bar-mode 1)
-(set-fringe-mode 10)
+(set-fringe-mode 0)
 (ido-mode 1)
 (line-number-mode 1)
 (column-number-mode 1)
-(global-display-line-numbers-mode -1)
+(global-display-line-numbers-mode 0)
+
+(setq inhibit-startup-screen t)
+(setq make-backup-files nil) ; stop creating backup~ files
+(setq auto-save-default nil) ; stop creating #autosave# files
+(setq org-startup-indented t)
+(put 'dired-find-alternate-file 'disabled nil)
 
 ;; (load-theme 'monokai t)
 ;; (load-theme 'dracula t)
@@ -102,43 +113,17 @@ Missing packages are installed automatically."
 (require 'dired-sidebar)
 (global-set-key (kbd "C-x C-n") 'dired-sidebar-toggle-with-current-directory)
 
-(require 'company)
-;; (add-hook 'after-init-hook 'global-company-mode)
-
-(require 'company-tabnine)
-(add-to-list 'company-backends #'company-tabnine)
-(setq company-idle-delay 0)
-(setq company-show-numbers nil)
-
-(require 'keycast)
-;; (keycast-mode t)
-(set-face-attribute 'keycast-key nil
-                    :weight 'normal
-                    :box nil
-                    :foreground "#FFF"
-                    :background  "#1c1c1c")
-
 (require 'rainbow-mode)
 (rainbow-mode 1)
-
-(require 'evil)
-;; (evil-mode 1)
-
-;; TODO org config
-(require 'org)
-(require 'org-contrib)
-(setq org-startup-indented t)
-
-(setq org-agenda-start-with-log-mode t)
-(setq org-log-done 'time)
-(setq org-log-into-drawer t)
-(setq org-agenda-files
-      '("~/Documents/org/todos.org"))
 
 (require 'doom-modeline)
 (doom-modeline-mode 1)
 
+(require 'dumb-jump)
+(add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
+
 ;; other keybindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-(global-set-key (kbd "M-<up>") 'move-line-up)
-(global-set-key (kbd "M-<down>") 'move-line-down)
+(global-set-key (kbd "M-p") 'move-line-up)
+(global-set-key (kbd "M-n") 'move-line-down)
+(global-set-key (kbd "M-*") 'compile)
