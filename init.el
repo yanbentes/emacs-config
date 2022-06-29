@@ -15,8 +15,10 @@
            gcs-done))
 
 (add-hook 'emacs-startup-hook #'efs/display-startup-time)
+(add-hook 'emacs-startup-hook #'fix-scratch)
 
 (load "~/.emacs.d/early-init.el")
+(load "~/.emacs.d/scratch.el")
 
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
@@ -94,6 +96,7 @@ Missing packages are installed automatically."
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
 (setq org-startup-indented t)
+
 (put 'dired-find-alternate-file 'disabled nil)
 
 ;; (load-theme 'monokai t)
