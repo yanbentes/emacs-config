@@ -81,13 +81,22 @@ Missing packages are installed automatically."
 
 (advice-add 'replace-string :around #'with-case-fold-search)
 
+;; yas backend in company
+(defvar company-mode/enable-yas t
+  "Enable yasnippet for all backends.")
+
+(defun company-mode/backend-with-yas (backend)
+  (if (or (not company-mode/enable-yas) (and (listp backend) (member 'company-yasnippet backend)))
+      backend
+    (append (if (consp backend) backend (list backend))
+            '(:with company-yasnippet))))
+
 ;; emacs gui
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 1)
 (set-fringe-mode 0)
-(ido-mode 1)
 (line-number-mode 1)
 (column-number-mode 1)
 (global-display-line-numbers-mode 0)
@@ -96,12 +105,13 @@ Missing packages are installed automatically."
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
 (setq org-startup-indented t)
-
 (put 'dired-find-alternate-file 'disabled nil)
 
 ;; (load-theme 'monokai t)
 ;; (load-theme 'dracula t)
 (load-theme 'gruber-darker t)
+
+(ido-mode 1)
 
 (require 'smex)
 (global-set-key (kbd "M-x") 'smex)
@@ -125,8 +135,19 @@ Missing packages are installed automatically."
 (require 'dumb-jump)
 (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 
+(require 'lsp-mode)
+(add-hook 'c-mode-hook 'lsp)
+(add-hook 'c++-mode-hook 'lsp)
+(setq lsp-headerline-breadcrumb-segments '(symbols))
+(setq lsp-diagnostics-provider :none)
+(setq lsp-modeline-code-actions-segments '(name))
+
+(require 'company)
+(setq company-format-margin-function nil)
+(setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
+
 ;; other keybindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-(global-set-key (kbd "M-p") 'move-line-up)
-(global-set-key (kbd "M-n") 'move-line-down)
+(global-set-key (kbd "M-P") 'move-line-up)
+(global-set-key (kbd "M-N") 'move-line-down)
 (global-set-key (kbd "M-*") 'compile)

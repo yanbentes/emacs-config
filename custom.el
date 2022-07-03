@@ -20,7 +20,7 @@
  '(ispell-dictionary nil)
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
-   '(dumb-jump doom-modeline org org-contrib rainbow-mode auctex cmake-mode yasnippet smex python-mode monokai-theme markdown-mode lua-mode gruber-darker-theme dracula-theme dired-sidebar))
+   '(company lsp-mode dumb-jump doom-modeline org rainbow-mode auctex cmake-mode yasnippet smex python-mode monokai-theme markdown-mode lua-mode gruber-darker-theme dracula-theme dired-sidebar))
  '(pos-tip-background-color "#FFFACE")
  '(pos-tip-foreground-color "#272822")
  '(vc-annotate-background nil)
