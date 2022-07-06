@@ -81,16 +81,6 @@ Missing packages are installed automatically."
 
 (advice-add 'replace-string :around #'with-case-fold-search)
 
-;; yas backend in company
-(defvar company-mode/enable-yas t
-  "Enable yasnippet for all backends.")
-
-(defun company-mode/backend-with-yas (backend)
-  (if (or (not company-mode/enable-yas) (and (listp backend) (member 'company-yasnippet backend)))
-      backend
-    (append (if (consp backend) backend (list backend))
-            '(:with company-yasnippet))))
-
 ;; emacs gui
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 (tool-bar-mode 0)
@@ -107,7 +97,6 @@ Missing packages are installed automatically."
 (setq org-startup-indented t)
 (put 'dired-find-alternate-file 'disabled nil)
 
-;; (load-theme 'monokai t)
 ;; (load-theme 'dracula t)
 (load-theme 'gruber-darker t)
 
@@ -129,8 +118,10 @@ Missing packages are installed automatically."
 (require 'rainbow-mode)
 (rainbow-mode 1)
 
+(require 'all-the-icons)
 (require 'doom-modeline)
 (doom-modeline-mode 1)
+(setq doom-modeline-lsp t)
 
 (require 'dumb-jump)
 (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
@@ -138,13 +129,12 @@ Missing packages are installed automatically."
 (require 'lsp-mode)
 (add-hook 'c-mode-hook 'lsp)
 (add-hook 'c++-mode-hook 'lsp)
+;; (setq lsp-diagnostics-provider :none)
 (setq lsp-headerline-breadcrumb-segments '(symbols))
-(setq lsp-diagnostics-provider :none)
 (setq lsp-modeline-code-actions-segments '(name))
 
 (require 'company)
 (setq company-format-margin-function nil)
-(setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
 
 ;; other keybindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)

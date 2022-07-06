@@ -1,16 +1,18 @@
 (defvar timu-package-list
-  '(smex
+  '(all-the-icons
     auctex
-    yasnippet
-    lua-mode
-    python-mode
-    rainbow-mode
-    markdown-mode
-    monokai-theme
-    dracula-theme
-    gruber-darker-theme
+    company
     dired-sidebar
     doom-modeline
-    dumb-jump)
+    dracula-theme
+    dumb-jump
+    gruber-darker-theme
+    lsp-mode
+    lua-mode
+    markdown-mode
+    python-mode
+    rainbow-mode
+    smex
+    yasnippet)
   "List of packages to be installed for the Emacs config to work as configured")
 

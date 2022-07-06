@@ -1,0 +1,21 @@
+# -*- mode: snippet -*-
+# name: aula
+# key: aula
+# --
+
+# Anotações - Aula 01
+
+### Disciplina: Química 3
+### Professor: Yan W. L. Bentes
+
+## Tema da aula
+
+$1
+
+## Desenvolvimento da aula
+
+$2
+
+### Referências
+
+- $0
