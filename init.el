@@ -81,6 +81,21 @@ Missing packages are installed automatically."
 
 (advice-add 'replace-string :around #'with-case-fold-search)
 
+;; move cursor to new window automatically
+(defun split-and-follow-horizontally ()
+  (interactive)
+  (split-window-below)
+  (balance-windows)
+  (other-window 1))
+(global-set-key (kbd "C-x 2") 'split-and-follow-horizontally)
+
+(defun split-and-follow-vertically ()
+  (interactive)
+  (split-window-right)
+  (balance-windows)
+  (other-window 1))
+(global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
+
 ;; emacs gui
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 (tool-bar-mode 0)
@@ -98,7 +113,8 @@ Missing packages are installed automatically."
 (put 'dired-find-alternate-file 'disabled nil)
 
 ;; (load-theme 'dracula t)
-(load-theme 'gruber-darker t)
+;; (load-theme 'gruber-darker t)
+(load-theme 'doom-monokai-classic t)
 
 (ido-mode 1)
 
@@ -119,9 +135,13 @@ Missing packages are installed automatically."
 (rainbow-mode 1)
 
 (require 'all-the-icons)
+(setq all-the-icons-scale-factor 1.2)
+
 (require 'doom-modeline)
 (doom-modeline-mode 1)
-(setq doom-modeline-lsp t)
+(doom-modeline-def-modeline 'main
+    '(bar window-number matches buffer-info remote-host buffer-position selection-info)
+    '(objed-state misc-info persp-name irc mu4e github debug input-method buffer-encoding lsp major-mode process vcs checker "  "))
 
 (require 'dumb-jump)
 (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
@@ -129,9 +149,9 @@ Missing packages are installed automatically."
 (require 'lsp-mode)
 (add-hook 'c-mode-hook 'lsp)
 (add-hook 'c++-mode-hook 'lsp)
-;; (setq lsp-diagnostics-provider :none)
 (setq lsp-headerline-breadcrumb-segments '(symbols))
 (setq lsp-modeline-code-actions-segments '(name))
+(setq lsp-keep-workspace-alive nil)
 
 (require 'company)
 (setq company-format-margin-function nil)

@@ -2,6 +2,4 @@
 # name: md to pdf
 # key: mdtopdf
 # --
-
 pandoc -s -V geometry:margin=1in -H ../disable_float.tex -o $1.pdf $0.md
-

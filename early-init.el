@@ -4,8 +4,10 @@
     company
     dired-sidebar
     doom-modeline
+    doom-themes
     dracula-theme
     dumb-jump
+    ein
     gruber-darker-theme
     lsp-mode
     lua-mode

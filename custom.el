@@ -4,6 +4,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(compilation-message-face 'default)
+ '(coverlay:tested-line-background-color "#E1FFE1")
+ '(coverlay:untested-line-background-color "LavenderBlush")
  '(doom-modeline-mode t)
  '(fci-rule-color "#3C3D37")
  '(frame-brackground-mode 'dark)
@@ -18,9 +20,11 @@
      ("#F309DF" . 85)
      ("#3C3D37" . 100)))
  '(ispell-dictionary nil)
+ '(keycast-mode t)
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
-   '(all-the-icons company lsp-mode dumb-jump doom-modeline rainbow-mode auctex cmake-mode yasnippet smex python-mode markdown-mode lua-mode gruber-darker-theme dracula-theme dired-sidebar))
+   '(doom-themes ein all-the-icons company lsp-mode dumb-jump doom-modeline rainbow-mode auctex cmake-mode yasnippet smex python-mode markdown-mode lua-mode gruber-darker-theme dracula-theme dired-sidebar))
+ '(pdf-view-midnight-colors '("#FDF4C1" . "#282828"))
  '(pos-tip-background-color "#FFFACE")
  '(pos-tip-foreground-color "#272822")
  '(vc-annotate-background nil)
