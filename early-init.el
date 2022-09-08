@@ -1,5 +1,6 @@
 (defvar timu-package-list
   '(all-the-icons
+    arduino-mode
     auctex
     company
     dired-sidebar

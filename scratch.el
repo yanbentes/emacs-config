@@ -17,5 +17,6 @@
                                                         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢷⠾⠛⠂⢹⠀⠀⠀⢡⠀⠀⠀⠀⠀⠙⠛⠿⢿")
 
 (defun fix-scratch ()
-  (beginning-of-buffer))
+  (beginning-of-buffer)
+  (display-line-numbers-mode 0))
 

@@ -97,7 +97,7 @@ Missing packages are installed automatically."
 (global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
 
 ;; emacs gui
-(add-hook 'window-setup-hook 'toggle-frame-maximized t)
+(ido-mode 1)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 1)
@@ -105,6 +105,8 @@ Missing packages are installed automatically."
 (line-number-mode 1)
 (column-number-mode 1)
 (global-display-line-numbers-mode 0)
+(add-hook 'window-setup-hook 'toggle-frame-maximized t)
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
 (setq inhibit-startup-screen t)
 (setq make-backup-files nil) ; stop creating backup~ files
@@ -115,8 +117,6 @@ Missing packages are installed automatically."
 ;; (load-theme 'dracula t)
 ;; (load-theme 'gruber-darker t)
 (load-theme 'doom-monokai-classic t)
-
-(ido-mode 1)
 
 (require 'smex)
 (global-set-key (kbd "M-x") 'smex)
@@ -147,11 +147,19 @@ Missing packages are installed automatically."
 (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 
 (require 'lsp-mode)
-(add-hook 'c-mode-hook 'lsp)
-(add-hook 'c++-mode-hook 'lsp)
+(add-hook 'c-mode-hook #'lsp)
+(add-hook 'c++-mode-hook #'lsp)
+(add-hook 'python-mode-hook #'lsp)
+(add-hook 'html-mode-hook #'lsp)
+(add-hook 'sh-mode-hook #'lsp)
 (setq lsp-headerline-breadcrumb-segments '(symbols))
 (setq lsp-modeline-code-actions-segments '(name))
 (setq lsp-keep-workspace-alive nil)
+(setq lsp-warn-no-matched-clients nil)
+
+;; pylsp config
+(setq lsp-pylsp-plugins-pydocstyle-enabled nil)
+(setq lsp-pylsp-plugins-flake8-max-line-length 1000)
 
 (require 'company)
 (setq company-format-margin-function nil)
