@@ -1,12 +1,12 @@
-;; minimize garbage collection during startup
+;;; Minimize garbage collection during startup
 (setq gc-cons-threshold most-positive-fixnum)
 
-;; lower threshold back to 8 MiB (default is 800kB)
+; lower threshold back to 8 MiB (default is 800kB)
 (add-hook 'emacs-startup-hook
           (lambda ()
             (setq gc-cons-threshold (expt 2 23))))
 
-;; display startup time
+;; Display startup time
 (defun efs/display-startup-time ()
   (message "Emacs loaded in %s with %d garbage collections."
            (format "%.2f seconds"
@@ -26,8 +26,10 @@
 			 ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
 
 (package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
 
-;; setup package installation
+;;; Setup package installation
 (defun timu/packages-installed-p ()
   "Check if all packages in `timu-package-list' are installed."
   (cl-every #'package-installed-p timu-package-list))
@@ -54,15 +56,16 @@ Missing packages are installed automatically."
     ;; install the missing packages
     (timu/require-packages timu-package-list)))
 
-;; run package installation
+; run package installation
 (timu/install-packages)
 
-;; custom variables in a different file
+;;; Custom variables in a different file
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (when (file-exists-p custom-file)
   (load custom-file))
 
-;; move lines up and down
+;;; Custom functions
+; move lines up and down
 (defun move-line-up ()
   (interactive)
   (transpose-lines 1)
@@ -74,7 +77,7 @@ Missing packages are installed automatically."
   (transpose-lines 1)
   (forward-line -1))
 
-;; case sensitive replace string
+; case sensitive replace string
 (defun with-case-fold-search (orig-fun &rest args)
   (let ((case-fold-search t))
     (apply orig-fun args)))
@@ -96,7 +99,7 @@ Missing packages are installed automatically."
   (other-window 1))
 (global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
 
-;; emacs gui
+;;; GUI tweaks
 (ido-mode 1)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
@@ -104,9 +107,8 @@ Missing packages are installed automatically."
 (set-fringe-mode 0)
 (line-number-mode 1)
 (column-number-mode 1)
-(global-display-line-numbers-mode 0)
+(global-display-line-numbers-mode t)
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
-(add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
 (setq inhibit-startup-screen t)
 (setq make-backup-files nil) ; stop creating backup~ files
@@ -114,10 +116,20 @@ Missing packages are installed automatically."
 (setq org-startup-indented t)
 (put 'dired-find-alternate-file 'disabled nil)
 
-;; (load-theme 'dracula t)
-;; (load-theme 'gruber-darker t)
-(load-theme 'doom-monokai-classic t)
+; disable line numbers for some modes
+(dolist (mode '(org-mode-hook
+                term-mode-hook
+                shell-mode-hook
+                eshell-mode-hook
+		markdown-mode))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
+;;; Themes
+; (load-theme 'dracula t)
+(load-theme 'gruber-darker t)
+; (load-theme 'doom-monokai-classic t)
+
+;;; Packages configuration
 (require 'smex)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
@@ -152,19 +164,23 @@ Missing packages are installed automatically."
 (add-hook 'python-mode-hook #'lsp)
 (add-hook 'html-mode-hook #'lsp)
 (add-hook 'sh-mode-hook #'lsp)
+
 (setq lsp-headerline-breadcrumb-segments '(symbols))
 (setq lsp-modeline-code-actions-segments '(name))
 (setq lsp-keep-workspace-alive nil)
 (setq lsp-warn-no-matched-clients nil)
 
-;; pylsp config
+; pylsp config
 (setq lsp-pylsp-plugins-pydocstyle-enabled nil)
 (setq lsp-pylsp-plugins-flake8-max-line-length 1000)
 
 (require 'company)
 (setq company-format-margin-function nil)
 
-;; other keybindings
+(require 'which-key)
+(which-key-mode)
+
+;;; Custom keybindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (global-set-key (kbd "M-P") 'move-line-up)
 (global-set-key (kbd "M-N") 'move-line-down)

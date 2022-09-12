@@ -16,6 +16,7 @@
     python-mode
     rainbow-mode
     smex
+    which-key
     yasnippet)
   "List of packages to be installed for the Emacs config to work as configured")
 
