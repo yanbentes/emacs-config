@@ -23,10 +23,11 @@
  '(keycast-mode t)
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
-   '(which-key ein arduino-mode doom-themes all-the-icons company lsp-mode dumb-jump doom-modeline rainbow-mode auctex cmake-mode yasnippet smex python-mode markdown-mode lua-mode gruber-darker-theme dracula-theme dired-sidebar))
+   '(neotree which-key ein arduino-mode doom-themes all-the-icons company lsp-mode dumb-jump doom-modeline rainbow-mode auctex cmake-mode yasnippet smex python-mode markdown-mode lua-mode gruber-darker-theme dracula-theme))
  '(pdf-view-midnight-colors '("#FDF4C1" . "#282828"))
  '(pos-tip-background-color "#FFFACE")
  '(pos-tip-foreground-color "#272822")
+ '(temp-buffer-resize-mode t)
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    '((20 . "#F92672")

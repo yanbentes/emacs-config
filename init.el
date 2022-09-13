@@ -107,7 +107,7 @@ Missing packages are installed automatically."
 (set-fringe-mode 0)
 (line-number-mode 1)
 (column-number-mode 1)
-(global-display-line-numbers-mode t)
+(global-display-line-numbers-mode 0)
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 
 (setq inhibit-startup-screen t)
@@ -116,18 +116,14 @@ Missing packages are installed automatically."
 (setq org-startup-indented t)
 (put 'dired-find-alternate-file 'disabled nil)
 
-; disable line numbers for some modes
-(dolist (mode '(org-mode-hook
-                term-mode-hook
-                shell-mode-hook
-                eshell-mode-hook
-		markdown-mode))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+; disable scroll bar in some modes
+(dolist (mode '(neotree-mode-hook))
+  (add-hook mode (lambda () (scroll-bar-mode 0))))
 
 ;;; Themes
 ; (load-theme 'dracula t)
-(load-theme 'gruber-darker t)
-; (load-theme 'doom-monokai-classic t)
+; (load-theme 'gruber-darker t)
+(load-theme 'doom-monokai-classic t)
 
 ;;; Packages configuration
 (require 'smex)
@@ -139,9 +135,6 @@ Missing packages are installed automatically."
 (yas-global-mode 1)
 (setq yas/triggers-in-field nil)
 (setq yas-snippet-dirs '("~/.emacs.d/snippets/"))
-
-(require 'dired-sidebar)
-(global-set-key (kbd "C-x C-n") 'dired-sidebar-toggle-with-current-directory)
 
 (require 'rainbow-mode)
 (rainbow-mode 1)
@@ -179,6 +172,11 @@ Missing packages are installed automatically."
 
 (require 'which-key)
 (which-key-mode)
+
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+(setq neo-smart-open t)
+(setq neo-theme 'nerd)
 
 ;;; Custom keybindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)

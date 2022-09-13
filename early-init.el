@@ -3,7 +3,6 @@
     arduino-mode
     auctex
     company
-    dired-sidebar
     doom-modeline
     doom-themes
     dracula-theme
@@ -13,6 +12,7 @@
     lsp-mode
     lua-mode
     markdown-mode
+    neotree
     python-mode
     rainbow-mode
     smex
