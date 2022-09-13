@@ -6,7 +6,7 @@
           (lambda ()
             (setq gc-cons-threshold (expt 2 23))))
 
-;; Display startup time
+;;; Display startup time
 (defun efs/display-startup-time ()
   (message "Emacs loaded in %s with %d garbage collections."
            (format "%.2f seconds"
@@ -103,11 +103,11 @@ Missing packages are installed automatically."
 (ido-mode 1)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
-(scroll-bar-mode 1)
-(set-fringe-mode 0)
+(scroll-bar-mode 0)
+(set-fringe-mode 2)
 (line-number-mode 1)
 (column-number-mode 1)
-(global-display-line-numbers-mode 0)
+(global-display-line-numbers-mode t)
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 
 (setq inhibit-startup-screen t)
@@ -115,6 +115,15 @@ Missing packages are installed automatically."
 (setq auto-save-default nil) ; stop creating #autosave# files
 (setq org-startup-indented t)
 (put 'dired-find-alternate-file 'disabled nil)
+
+; disable line numbers in some modes
+(dolist (mode '(org-mode-hook
+                term-mode-hook
+                shell-mode-hook
+                eshell-mode-hook
+		markdown-mode-hook
+		neotree-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ; disable scroll bar in some modes
 (dolist (mode '(neotree-mode-hook))
