@@ -7,6 +7,7 @@
  '(coverlay:tested-line-background-color "#E1FFE1")
  '(coverlay:untested-line-background-color "LavenderBlush")
  '(doom-modeline-mode t)
+ '(ein:output-area-inlined-images t)
  '(fci-rule-color "#3C3D37")
  '(frame-brackground-mode 'dark)
  '(highlight-changes-colors '("#FD5FF0" "#AE81FF"))
@@ -23,7 +24,7 @@
  '(keycast-mode t)
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
-   '(neotree which-key ein arduino-mode doom-themes all-the-icons company lsp-mode dumb-jump doom-modeline rainbow-mode auctex cmake-mode yasnippet smex python-mode markdown-mode lua-mode gruber-darker-theme dracula-theme))
+   '(eink-theme markdown-preview-mode neotree which-key ein arduino-mode doom-themes all-the-icons company lsp-mode dumb-jump doom-modeline rainbow-mode auctex cmake-mode yasnippet smex python-mode markdown-mode lua-mode gruber-darker-theme dracula-theme))
  '(pdf-view-midnight-colors '("#FDF4C1" . "#282828"))
  '(pos-tip-background-color "#FFFACE")
  '(pos-tip-foreground-color "#272822")

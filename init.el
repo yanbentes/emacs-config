@@ -1,12 +1,12 @@
-;;; Minimize garbage collection during startup
+;; Minimize garbage collection during startup
 (setq gc-cons-threshold most-positive-fixnum)
 
-; lower threshold back to 8 MiB (default is 800kB)
+;; lower threshold back to 8 MiB (default is 800kB)
 (add-hook 'emacs-startup-hook
           (lambda ()
             (setq gc-cons-threshold (expt 2 23))))
 
-;;; Display startup time
+;; Display startup time
 (defun efs/display-startup-time ()
   (message "Emacs loaded in %s with %d garbage collections."
            (format "%.2f seconds"
@@ -29,7 +29,7 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-;;; Setup package installation
+;; Setup package installation
 (defun timu/packages-installed-p ()
   "Check if all packages in `timu-package-list' are installed."
   (cl-every #'package-installed-p timu-package-list))
@@ -56,16 +56,16 @@ Missing packages are installed automatically."
     ;; install the missing packages
     (timu/require-packages timu-package-list)))
 
-; run package installation
+;; run package installation
 (timu/install-packages)
 
-;;; Custom variables in a different file
+;; Custom variables in a different file
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (when (file-exists-p custom-file)
   (load custom-file))
 
-;;; Custom functions
-; move lines up and down
+;; Custom functions
+;; move lines up and down
 (defun move-line-up ()
   (interactive)
   (transpose-lines 1)
@@ -77,7 +77,7 @@ Missing packages are installed automatically."
   (transpose-lines 1)
   (forward-line -1))
 
-; case sensitive replace string
+;; case sensitive replace string
 (defun with-case-fold-search (orig-fun &rest args)
   (let ((case-fold-search t))
     (apply orig-fun args)))
@@ -99,16 +99,18 @@ Missing packages are installed automatically."
   (other-window 1))
 (global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
 
-;;; GUI tweaks
+;; GUI tweaks
 (ido-mode 1)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
-(scroll-bar-mode 0)
+(scroll-bar-mode 1)
 (set-fringe-mode 2)
 (line-number-mode 1)
 (column-number-mode 1)
-(global-display-line-numbers-mode t)
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
+;; line numbers relative
+(setq display-line-numbers-type (quote relative))
+(global-display-line-numbers-mode t)
 
 (setq inhibit-startup-screen t)
 (setq make-backup-files nil) ; stop creating backup~ files
@@ -116,7 +118,7 @@ Missing packages are installed automatically."
 (setq org-startup-indented t)
 (put 'dired-find-alternate-file 'disabled nil)
 
-; disable line numbers in some modes
+;; disable line numbers in some modes
 (dolist (mode '(org-mode-hook
                 term-mode-hook
                 shell-mode-hook
@@ -125,16 +127,15 @@ Missing packages are installed automatically."
 		neotree-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
-; disable scroll bar in some modes
-(dolist (mode '(neotree-mode-hook))
-  (add-hook mode (lambda () (scroll-bar-mode 0))))
+;; Themes
+;; (load-theme 'dracula t)
+;; (load-theme 'gruber-darker t)
+;; (load-theme 'doom-monokai-classic t)
+;; (load-theme 'doom-monokai-spectrum t)
+;; (load-theme 'doom-molokai t)
+(load-theme 'doom-old-hope t)
 
-;;; Themes
-; (load-theme 'dracula t)
-; (load-theme 'gruber-darker t)
-(load-theme 'doom-monokai-classic t)
-
-;;; Packages configuration
+;; Packages configuration
 (require 'smex)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
@@ -158,6 +159,7 @@ Missing packages are installed automatically."
     '(objed-state misc-info persp-name irc mu4e github debug input-method buffer-encoding lsp major-mode process vcs checker "  "))
 
 (require 'dumb-jump)
+
 (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 
 (require 'lsp-mode)
@@ -172,7 +174,7 @@ Missing packages are installed automatically."
 (setq lsp-keep-workspace-alive nil)
 (setq lsp-warn-no-matched-clients nil)
 
-; pylsp config
+;; pylsp config
 (setq lsp-pylsp-plugins-pydocstyle-enabled nil)
 (setq lsp-pylsp-plugins-flake8-max-line-length 1000)
 
@@ -187,7 +189,7 @@ Missing packages are installed automatically."
 (setq neo-smart-open t)
 (setq neo-theme 'nerd)
 
-;;; Custom keybindings
+;; Custom keybindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (global-set-key (kbd "M-P") 'move-line-up)
 (global-set-key (kbd "M-N") 'move-line-down)

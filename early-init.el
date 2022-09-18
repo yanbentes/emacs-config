@@ -12,6 +12,7 @@
     lsp-mode
     lua-mode
     markdown-mode
+    markdown-preview-mode
     neotree
     python-mode
     rainbow-mode
