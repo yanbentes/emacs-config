@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: D100: Missing docstring in public module
+# key: bug
+# --
+"""
+Python3 script.
+
+Pylint para de dar warnings pelo amor de deus
+"""
