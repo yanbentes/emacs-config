@@ -103,11 +103,13 @@ Missing packages are installed automatically."
 (ido-mode 1)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
-(scroll-bar-mode 1)
-(set-fringe-mode 2)
+(scroll-bar-mode 0)
+(set-fringe-mode 5)
 (line-number-mode 1)
 (column-number-mode 1)
+(set-face-foreground 'vertical-border "#282828")
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
+
 ;; line numbers relative
 (setq display-line-numbers-type (quote relative))
 (global-display-line-numbers-mode t)
@@ -129,11 +131,10 @@ Missing packages are installed automatically."
 
 ;; Themes
 ;; (load-theme 'dracula t)
-;; (load-theme 'gruber-darker t)
+(load-theme 'gruber-darker t)
 ;; (load-theme 'doom-monokai-classic t)
-;; (load-theme 'doom-monokai-spectrum t)
 ;; (load-theme 'doom-molokai t)
-(load-theme 'doom-old-hope t)
+;; (load-theme 'doom-old-hope t)
 
 ;; Packages configuration
 (require 'smex)
@@ -159,15 +160,17 @@ Missing packages are installed automatically."
     '(objed-state misc-info persp-name irc mu4e github debug input-method buffer-encoding lsp major-mode process vcs checker "  "))
 
 (require 'dumb-jump)
-
 (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 
 (require 'lsp-mode)
 (add-hook 'c-mode-hook #'lsp)
 (add-hook 'c++-mode-hook #'lsp)
 (add-hook 'python-mode-hook #'lsp)
-(add-hook 'html-mode-hook #'lsp)
+;; (add-hook 'html-mode-hook #'lsp)
 (add-hook 'sh-mode-hook #'lsp)
+(add-hook 'js-mode-hook #'lsp)
+(add-hook 'ts-mode-hook #'lsp)
+(add-hook 'web-mode-hook #'lsp)
 
 (setq lsp-headerline-breadcrumb-segments '(symbols))
 (setq lsp-modeline-code-actions-segments '(name))
@@ -176,7 +179,10 @@ Missing packages are installed automatically."
 
 ;; pylsp config
 (setq lsp-pylsp-plugins-pydocstyle-enabled nil)
-(setq lsp-pylsp-plugins-flake8-max-line-length 1000)
+(setq lsp-pylsp-plugins-flake8-max-line-length 100)
+
+;; html-ls config
+(setq lsp-html-format-enable nil)
 
 (require 'company)
 (setq company-format-margin-function nil)
@@ -185,9 +191,17 @@ Missing packages are installed automatically."
 (which-key-mode)
 
 (require 'neotree)
+(add-hook 'neotree-mode-hook 'doom-modeline-mode)
 (global-set-key [f8] 'neotree-toggle)
 (setq neo-smart-open t)
 (setq neo-theme 'nerd)
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
+(setq web-mode-engines-alist '(("django" . "\\.html\\'")))
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-markup-indent-offset 2)
 
 ;; Custom keybindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)

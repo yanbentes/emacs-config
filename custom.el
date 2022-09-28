@@ -3,11 +3,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#1c1d20" "#ea3d54" "#78bd65" "#fedd38" "#4fb3d8" "#b978ab" "#4fb3d8" "#cbccd1"])
  '(compilation-message-face 'default)
  '(coverlay:tested-line-background-color "#E1FFE1")
  '(coverlay:untested-line-background-color "LavenderBlush")
+ '(custom-safe-themes
+   '("251ed7ecd97af314cd77b07359a09da12dcd97be35e3ab761d4a92d8d8cf9a71" "3d2e532b010eeb2f5e09c79f0b3a277bfc268ca91a59cdda7ffd056b868a03bc" default))
  '(doom-modeline-mode t)
  '(ein:output-area-inlined-images t)
+ '(exwm-floating-border-color "#32363b")
  '(fci-rule-color "#3C3D37")
  '(frame-brackground-mode 'dark)
  '(highlight-changes-colors '("#FD5FF0" "#AE81FF"))
@@ -21,13 +26,19 @@
      ("#F309DF" . 85)
      ("#3C3D37" . 100)))
  '(ispell-dictionary nil)
+ '(jdee-db-active-breakpoint-face-colors (cons "#1B2229" "#fedd38"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#1B2229" "#78bd65"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#1B2229" "#3f444a"))
  '(keycast-mode t)
  '(magit-diff-use-overlays nil)
+ '(objed-cursor-color "#ea3d54")
  '(package-selected-packages
-   '(eink-theme markdown-preview-mode neotree which-key ein arduino-mode doom-themes all-the-icons company lsp-mode dumb-jump doom-modeline rainbow-mode auctex cmake-mode yasnippet smex python-mode markdown-mode lua-mode gruber-darker-theme dracula-theme))
+   '(web-mode auctex eink-theme markdown-preview-mode neotree which-key ein arduino-mode doom-themes all-the-icons company lsp-mode dumb-jump doom-modeline rainbow-mode cmake-mode yasnippet smex python-mode markdown-mode lua-mode gruber-darker-theme dracula-theme))
  '(pdf-view-midnight-colors '("#FDF4C1" . "#282828"))
  '(pos-tip-background-color "#FFFACE")
  '(pos-tip-foreground-color "#272822")
+ '(rustic-ansi-faces
+   ["#1c1d20" "#ea3d54" "#78bd65" "#fedd38" "#4fb3d8" "#b978ab" "#4fb3d8" "#cbccd1"])
  '(temp-buffer-resize-mode t)
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
