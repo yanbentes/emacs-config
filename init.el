@@ -99,11 +99,23 @@ Missing packages are installed automatically."
   (other-window 1))
 (global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
 
+
+;; duplicate lines
+(defun duplicate-line()
+  (interactive)
+  (move-beginning-of-line 1)
+  (kill-line)
+  (yank)
+  (open-line 1)
+  (next-line 1)
+  (yank)
+)
+
 ;; GUI tweaks
 (ido-mode 1)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
-(scroll-bar-mode 0)
+(scroll-bar-mode 1)
 (set-fringe-mode 5)
 (line-number-mode 1)
 (column-number-mode 1)
@@ -192,6 +204,7 @@ Missing packages are installed automatically."
 
 (require 'neotree)
 (add-hook 'neotree-mode-hook 'doom-modeline-mode)
+(add-hook 'neotree-mode-hook 'hl-line-mode)
 (global-set-key [f8] 'neotree-toggle)
 (setq neo-smart-open t)
 (setq neo-theme 'nerd)
@@ -200,11 +213,12 @@ Missing packages are installed automatically."
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
 (setq web-mode-engines-alist '(("django" . "\\.html\\'")))
-(setq web-mode-markup-indent-offset 2)
-(setq web-mode-markup-indent-offset 2)
+(setq web-mode-markup-indent-offset 4)
 
 ;; Custom keybindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-(global-set-key (kbd "M-P") 'move-line-up)
-(global-set-key (kbd "M-N") 'move-line-down)
+(global-set-key (kbd "M-p") 'move-line-up)
+(global-set-key (kbd "M-n") 'move-line-down)
 (global-set-key (kbd "M-*") 'compile)
+(global-set-key (kbd "C-x n") 'make-empty-file)
+(global-set-key (kbd "C-j") 'duplicate-line)
