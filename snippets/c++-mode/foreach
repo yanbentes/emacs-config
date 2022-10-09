@@ -2,6 +2,6 @@
 # name: for each
 # key: fore
 # --
-for($1: $2){
-$0
+for ($1: $2) {
+    $0
 }

@@ -143,9 +143,9 @@ Missing packages are installed automatically."
 
 ;; Themes
 ;; (load-theme 'dracula t)
-(load-theme 'gruber-darker t)
+;; (load-theme 'gruber-darker t)
 ;; (load-theme 'doom-monokai-classic t)
-;; (load-theme 'doom-molokai t)
+(load-theme 'doom-molokai t)
 ;; (load-theme 'doom-old-hope t)
 
 ;; Packages configuration
