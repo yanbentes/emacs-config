@@ -99,7 +99,6 @@ Missing packages are installed automatically."
   (other-window 1))
 (global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
 
-
 ;; duplicate lines
 (defun duplicate-line()
   (interactive)
@@ -109,7 +108,7 @@ Missing packages are installed automatically."
   (open-line 1)
   (next-line 1)
   (yank)
-)
+  )
 
 ;; GUI tweaks
 (ido-mode 1)
@@ -138,15 +137,14 @@ Missing packages are installed automatically."
                 shell-mode-hook
                 eshell-mode-hook
 		markdown-mode-hook
-		neotree-mode-hook))
+		neotree-mode-hook
+		dired-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; Themes
-;; (load-theme 'dracula t)
-;; (load-theme 'gruber-darker t)
+(load-theme 'gruber-darker t)
 ;; (load-theme 'doom-monokai-classic t)
-(load-theme 'doom-molokai t)
-;; (load-theme 'doom-old-hope t)
+;; (load-theme 'doom-molokai t)
 
 ;; Packages configuration
 (require 'smex)
@@ -158,9 +156,6 @@ Missing packages are installed automatically."
 (yas-global-mode 1)
 (setq yas/triggers-in-field nil)
 (setq yas-snippet-dirs '("~/.emacs.d/snippets/"))
-
-(require 'rainbow-mode)
-(rainbow-mode 1)
 
 (require 'all-the-icons)
 (setq all-the-icons-scale-factor 1.2)
@@ -178,7 +173,6 @@ Missing packages are installed automatically."
 (add-hook 'c-mode-hook #'lsp)
 (add-hook 'c++-mode-hook #'lsp)
 (add-hook 'python-mode-hook #'lsp)
-;; (add-hook 'html-mode-hook #'lsp)
 (add-hook 'sh-mode-hook #'lsp)
 (add-hook 'js-mode-hook #'lsp)
 (add-hook 'ts-mode-hook #'lsp)
@@ -189,6 +183,10 @@ Missing packages are installed automatically."
 (setq lsp-keep-workspace-alive nil)
 (setq lsp-warn-no-matched-clients nil)
 
+;; clang config
+(setq lsp-clients-clangd-args
+    '("--header-insertion=never"))
+
 ;; pylsp config
 (setq lsp-pylsp-plugins-pydocstyle-enabled nil)
 (setq lsp-pylsp-plugins-flake8-max-line-length 100)
@@ -197,10 +195,8 @@ Missing packages are installed automatically."
 (setq lsp-html-format-enable nil)
 
 (require 'company)
+(global-company-mode)
 (setq company-format-margin-function nil)
-
-(require 'which-key)
-(which-key-mode)
 
 (require 'neotree)
 (add-hook 'neotree-mode-hook 'doom-modeline-mode)
@@ -222,3 +218,8 @@ Missing packages are installed automatically."
 (global-set-key (kbd "M-*") 'compile)
 (global-set-key (kbd "C-x n") 'make-empty-file)
 (global-set-key (kbd "C-j") 'duplicate-line)
+;; buffer move
+(global-set-key (kbd "<C-S-up>")     'buf-move-up)
+(global-set-key (kbd "<C-S-down>")   'buf-move-down)
+(global-set-key (kbd "<C-S-left>")   'buf-move-left)
+(global-set-key (kbd "<C-S-right>")  'buf-move-right)
