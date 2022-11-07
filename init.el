@@ -118,6 +118,7 @@ Missing packages are installed automatically."
 (set-fringe-mode 5)
 (line-number-mode 1)
 (column-number-mode 1)
+(delete-selection-mode 1)
 (set-face-foreground 'vertical-border "#282828")
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 
