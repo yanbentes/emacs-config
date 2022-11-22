@@ -7,6 +7,7 @@
     doom-modeline
     doom-themes
     dumb-jump
+    ein
     gruber-darker-theme
     lsp-mode
     lua-mode

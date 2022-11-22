@@ -11,7 +11,7 @@
   (message "Emacs loaded in %s with %d garbage collections."
            (format "%.2f seconds"
                    (float-time
-		    (time-subtract after-init-time before-init-time)))
+					(time-subtract after-init-time before-init-time)))
            gcs-done))
 
 (add-hook 'emacs-startup-hook #'efs/display-startup-time)
@@ -23,7 +23,7 @@
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("elpa" . "https://elpa.gnu.org/packages/")
-			 ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
+						 ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
 
 (package-initialize)
 (unless package-archive-contents
@@ -137,9 +137,9 @@ Missing packages are installed automatically."
                 term-mode-hook
                 shell-mode-hook
                 eshell-mode-hook
-		markdown-mode-hook
-		neotree-mode-hook
-		dired-mode-hook))
+				markdown-mode-hook
+				neotree-mode-hook
+				dired-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; Themes
@@ -164,8 +164,8 @@ Missing packages are installed automatically."
 (require 'doom-modeline)
 (doom-modeline-mode 1)
 (doom-modeline-def-modeline 'main
-    '(bar window-number matches buffer-info remote-host buffer-position selection-info)
-    '(objed-state misc-info persp-name irc mu4e github debug input-method buffer-encoding lsp major-mode process vcs checker "  "))
+  '(bar window-number matches buffer-info remote-host buffer-position selection-info)
+  '(objed-state misc-info persp-name irc mu4e github debug input-method buffer-encoding lsp major-mode process vcs checker "  "))
 
 (require 'dumb-jump)
 (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
@@ -184,9 +184,9 @@ Missing packages are installed automatically."
 (setq lsp-keep-workspace-alive nil)
 (setq lsp-warn-no-matched-clients nil)
 
-;; clang config
+;; clangd config
 (setq lsp-clients-clangd-args
-    '("--header-insertion=never"))
+      '("--header-insertion=never" "--query-driver=/usr/bin/g++"))
 
 ;; pylsp config
 (setq lsp-pylsp-plugins-pydocstyle-enabled nil)
