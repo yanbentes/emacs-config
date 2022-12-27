@@ -171,13 +171,13 @@ Missing packages are installed automatically."
 (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 
 (require 'lsp-mode)
-(add-hook 'c-mode-hook #'lsp)
-(add-hook 'c++-mode-hook #'lsp)
-(add-hook 'python-mode-hook #'lsp)
-(add-hook 'sh-mode-hook #'lsp)
-(add-hook 'js-mode-hook #'lsp)
-(add-hook 'ts-mode-hook #'lsp)
-(add-hook 'web-mode-hook #'lsp)
+(add-hook 'c-mode-hook 'lsp)
+(add-hook 'c++-mode-hook 'lsp)
+(add-hook 'python-mode-hook 'lsp)
+(add-hook 'sh-mode-hook 'lsp)
+(add-hook 'js-mode-hook 'lsp)
+(add-hook 'ts-mode-hook 'lsp)
+(add-hook 'web-mode-hook 'lsp)
 
 (setq lsp-headerline-breadcrumb-segments '(symbols))
 (setq lsp-modeline-code-actions-segments '(name))
@@ -190,10 +190,16 @@ Missing packages are installed automatically."
 
 ;; pylsp config
 (setq lsp-pylsp-plugins-pydocstyle-enabled nil)
-(setq lsp-pylsp-plugins-flake8-max-line-length 100)
+(setq lsp-pylsp-plugins-flake8-max-line-length 200)
 
 ;; html-ls config
 (setq lsp-html-format-enable nil)
+
+;; json config
+(add-hook 'json-mode-hook
+          (lambda ()
+            (make-local-variable 'js-indent-level)
+            (setq js-indent-level 2)))
 
 (require 'company)
 (global-company-mode)
