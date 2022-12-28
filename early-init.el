@@ -1,13 +1,9 @@
 (defvar timu-package-list
   '(all-the-icons
-    arduino-mode
-    auctex
     buffer-move
     company
     doom-modeline
     doom-themes
-    dumb-jump
-    ein
     gruber-darker-theme
     lsp-mode
     lua-mode

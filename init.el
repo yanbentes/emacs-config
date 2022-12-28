@@ -123,7 +123,7 @@ Missing packages are installed automatically."
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 
 ;; line numbers relative
-(setq display-line-numbers-type (quote relative))
+;; (setq display-line-numbers-type (quote relative))
 (global-display-line-numbers-mode t)
 
 (setq inhibit-startup-screen t)
@@ -159,6 +159,7 @@ Missing packages are installed automatically."
 (setq yas-snippet-dirs '("~/.emacs.d/snippets/"))
 
 (require 'all-the-icons)
+;; M-x all-the-icons-install-fonts
 (setq all-the-icons-scale-factor 1.2)
 
 (require 'doom-modeline)
@@ -167,17 +168,10 @@ Missing packages are installed automatically."
   '(bar window-number matches buffer-info remote-host buffer-position selection-info)
   '(objed-state misc-info persp-name irc mu4e github debug input-method buffer-encoding lsp major-mode process vcs checker "  "))
 
-(require 'dumb-jump)
-(add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
-
 (require 'lsp-mode)
 (add-hook 'c-mode-hook 'lsp)
 (add-hook 'c++-mode-hook 'lsp)
 (add-hook 'python-mode-hook 'lsp)
-(add-hook 'sh-mode-hook 'lsp)
-(add-hook 'js-mode-hook 'lsp)
-(add-hook 'ts-mode-hook 'lsp)
-(add-hook 'web-mode-hook 'lsp)
 
 (setq lsp-headerline-breadcrumb-segments '(symbols))
 (setq lsp-modeline-code-actions-segments '(name))
@@ -191,15 +185,6 @@ Missing packages are installed automatically."
 ;; pylsp config
 (setq lsp-pylsp-plugins-pydocstyle-enabled nil)
 (setq lsp-pylsp-plugins-flake8-max-line-length 200)
-
-;; html-ls config
-(setq lsp-html-format-enable nil)
-
-;; json config
-(add-hook 'json-mode-hook
-          (lambda ()
-            (make-local-variable 'js-indent-level)
-            (setq js-indent-level 2)))
 
 (require 'company)
 (global-company-mode)
