@@ -123,7 +123,7 @@ Missing packages are installed automatically."
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 
 ;; line numbers relative
-;; (setq display-line-numbers-type (quote relative))
+(setq display-line-numbers-type (quote relative))
 (global-display-line-numbers-mode t)
 
 (setq inhibit-startup-screen t)
@@ -198,10 +198,15 @@ Missing packages are installed automatically."
 (setq neo-theme 'nerd)
 
 (require 'web-mode)
+(add-hook 'web-mode-hook (lambda () (whitespace-mode -1)))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
 (setq web-mode-engines-alist '(("django" . "\\.html\\'")))
+
 (setq web-mode-markup-indent-offset 4)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 4)
+(local-set-key (kbd "RET") 'newline-and-indent)
 
 ;; Custom keybindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -210,6 +215,8 @@ Missing packages are installed automatically."
 (global-set-key (kbd "M-*") 'compile)
 (global-set-key (kbd "C-x n") 'make-empty-file)
 (global-set-key (kbd "C-j") 'duplicate-line)
+(global-set-key (kbd "C-x 6") 'enlarge-window)
+(global-set-key (kbd "C-x 7") 'shrink-window)
 ;; buffer move
 (global-set-key (kbd "<C-S-up>")     'buf-move-up)
 (global-set-key (kbd "<C-S-down>")   'buf-move-down)
