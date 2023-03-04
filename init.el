@@ -122,6 +122,8 @@ Missing packages are installed automatically."
 (set-face-foreground 'vertical-border "#282828")
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 
+(setq ring-bell-function 'ignore)
+
 ;; line numbers relative
 (setq display-line-numbers-type (quote relative))
 (global-display-line-numbers-mode t)
