@@ -5,6 +5,7 @@
     doom-modeline
     doom-themes
     gruber-darker-theme
+    lsp-latex
     lsp-mode
     lua-mode
     markdown-mode
@@ -13,6 +14,7 @@
     python-mode
     smex
     web-mode
-    yasnippet)
+    yasnippet
+    yatex)
   "List of packages to be installed for the Emacs config to work as configured")
 

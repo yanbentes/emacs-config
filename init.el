@@ -188,6 +188,17 @@ Missing packages are installed automatically."
 (setq lsp-pylsp-plugins-pydocstyle-enabled nil)
 (setq lsp-pylsp-plugins-flake8-max-line-length 200)
 
+;; latex config
+(add-to-list 'load-path "/path/to/lsp-latex")
+(require 'lsp-latex)
+
+(with-eval-after-load "tex-mode"
+ (add-hook 'tex-mode-hook 'lsp)
+ (add-hook 'latex-mode-hook 'lsp))
+
+(with-eval-after-load "yatex"
+ (add-hook 'yatex-mode-hook 'lsp))
+
 (require 'company)
 (global-company-mode)
 (setq company-format-margin-function nil)
