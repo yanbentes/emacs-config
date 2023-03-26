@@ -18,7 +18,7 @@
 (add-hook 'emacs-startup-hook #'fix-scratch)
 
 (load "~/.emacs.d/early-init.el")
-(load "~/.emacs.d/scratch.el")
+(load "~/.emacs.d/scratch3.el")
 
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
