@@ -5,6 +5,6 @@
 !early-init.el
 !init.el
 !custom.el
-!scratch.el
+!scratch*.el
 !/snippets/
 !README.org

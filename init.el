@@ -1,7 +1,7 @@
 ;; Minimize garbage collection during startup
 (setq gc-cons-threshold most-positive-fixnum)
 
-;; lower threshold back to 8 MiB (default is 800kB)
+;; Lower threshold back to 8 MiB (default is 800kB)
 (add-hook 'emacs-startup-hook
           (lambda ()
             (setq gc-cons-threshold (expt 2 23))))
@@ -18,12 +18,12 @@
 (add-hook 'emacs-startup-hook #'fix-scratch)
 
 (load "~/.emacs.d/early-init.el")
-(load "~/.emacs.d/scratch3.el")
+(load "~/.emacs.d/scratch2.el")
 
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("elpa" . "https://elpa.gnu.org/packages/")
-						 ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
+			 ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
 
 (package-initialize)
 (unless package-archive-contents
@@ -49,14 +49,14 @@ Missing packages are installed automatically."
 (defun timu/install-packages ()
   "Install all packages listed in `timu-package-list'."
   (unless (timu/packages-installed-p)
-    ;; check for new packages (package versions)
+    ;; Check for new packages (package versions)
     (message "%s" "Reloading packages DB...")
     (package-refresh-contents)
     (message "%s" " done.")
-    ;; install the missing packages
+    ;; Install the missing packages
     (timu/require-packages timu-package-list)))
 
-;; run package installation
+;; Run package installation
 (timu/install-packages)
 
 ;; Custom variables in a different file
@@ -65,7 +65,7 @@ Missing packages are installed automatically."
   (load custom-file))
 
 ;; Custom functions
-;; move lines up and down
+;; Move lines up and down
 (defun move-line-up ()
   (interactive)
   (transpose-lines 1)
@@ -77,14 +77,14 @@ Missing packages are installed automatically."
   (transpose-lines 1)
   (forward-line -1))
 
-;; case sensitive replace string
+;; Case sensitive replace string
 (defun with-case-fold-search (orig-fun &rest args)
   (let ((case-fold-search t))
     (apply orig-fun args)))
 
 (advice-add 'replace-string :around #'with-case-fold-search)
 
-;; move cursor to new window automatically
+;; Move cursor to new window automatically
 (defun split-and-follow-horizontally ()
   (interactive)
   (split-window-below)
@@ -99,7 +99,7 @@ Missing packages are installed automatically."
   (other-window 1))
 (global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
 
-;; duplicate lines
+;; Duplicate lines
 (defun duplicate-line()
   (interactive)
   (move-beginning-of-line 1)
@@ -111,21 +111,23 @@ Missing packages are installed automatically."
   )
 
 ;; GUI tweaks
-(ido-mode 1)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 1)
-(set-fringe-mode 5)
+(set-fringe-mode 0)
 (line-number-mode 1)
 (column-number-mode 1)
 (delete-selection-mode 1)
 (set-face-foreground 'vertical-border "#282828")
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
+
 (setq ring-bell-function 'ignore)
 
-;; line numbers relative
-(setq display-line-numbers-type (quote relative))
+(setq display-line-numbers-type (quote absolute))
 (global-display-line-numbers-mode t)
 
 (setq inhibit-startup-screen t)
@@ -134,7 +136,7 @@ Missing packages are installed automatically."
 (setq org-startup-indented t)
 (put 'dired-find-alternate-file 'disabled nil)
 
-;; disable line numbers in some modes
+;; Disable line numbers in some modes
 (dolist (mode '(org-mode-hook
                 term-mode-hook
                 shell-mode-hook
@@ -160,16 +162,19 @@ Missing packages are installed automatically."
 (setq yas/triggers-in-field nil)
 (setq yas-snippet-dirs '("~/.emacs.d/snippets/"))
 
-(require 'all-the-icons)
 ;; M-x all-the-icons-install-fonts
+;; M-x nerd-icons-install-fonts
+;; Do fc-cache -f -v on terminal
+(require 'all-the-icons)
 (setq all-the-icons-scale-factor 1.2)
 
 (require 'doom-modeline)
 (doom-modeline-mode 1)
 (doom-modeline-def-modeline 'main
-  '(bar window-number matches buffer-info remote-host buffer-position selection-info)
-  '(objed-state misc-info persp-name irc mu4e github debug input-method buffer-encoding lsp major-mode process vcs checker "  "))
+ '(bar window-number matches buffer-info remote-host buffer-position selection-info)
+ '(objed-state misc-info persp-name irc mu4e github debug input-method buffer-encoding lsp major-mode process vcs checker "  "))
 
+;; Remember to install cland, pylsp and texlab
 (require 'lsp-mode)
 (add-hook 'c-mode-hook 'lsp)
 (add-hook 'c++-mode-hook 'lsp)
@@ -223,8 +228,8 @@ Missing packages are installed automatically."
 
 ;; Custom keybindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-(global-set-key (kbd "M-p") 'move-line-up)
-(global-set-key (kbd "M-n") 'move-line-down)
+;; (global-set-key (kbd "M-p") 'move-line-up)
+;; (global-set-key (kbd "M-n") 'move-line-down)
 (global-set-key (kbd "M-*") 'compile)
 (global-set-key (kbd "C-x n") 'make-empty-file)
 (global-set-key (kbd "C-j") 'duplicate-line)
