@@ -22,8 +22,7 @@
 
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")
-			 ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
+                         ("elpa" . "https://elpa.gnu.org/packages/"))
 
 (package-initialize)
 (unless package-archive-contents
@@ -114,7 +113,7 @@ Missing packages are installed automatically."
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 1)
-(set-fringe-mode 0)
+(set-fringe-mode 10)
 (line-number-mode 1)
 (column-number-mode 1)
 (delete-selection-mode 1)
@@ -127,7 +126,7 @@ Missing packages are installed automatically."
 
 (setq ring-bell-function 'ignore)
 
-(setq display-line-numbers-type (quote absolute))
+(setq display-line-numbers-type (quote relative))
 (global-display-line-numbers-mode t)
 
 (setq inhibit-startup-screen t)
@@ -141,9 +140,9 @@ Missing packages are installed automatically."
                 term-mode-hook
                 shell-mode-hook
                 eshell-mode-hook
-				markdown-mode-hook
-				neotree-mode-hook
-				dired-mode-hook))
+		markdown-mode-hook
+		neotree-mode-hook
+		dired-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; Themes
@@ -164,7 +163,6 @@ Missing packages are installed automatically."
 
 ;; M-x all-the-icons-install-fonts
 ;; M-x nerd-icons-install-fonts
-;; Do fc-cache -f -v on terminal
 (require 'all-the-icons)
 (setq all-the-icons-scale-factor 1.2)
 
@@ -174,7 +172,7 @@ Missing packages are installed automatically."
  '(bar window-number matches buffer-info remote-host buffer-position selection-info)
  '(objed-state misc-info persp-name irc mu4e github debug input-method buffer-encoding lsp major-mode process vcs checker "  "))
 
-;; Remember to install cland, pylsp and texlab
+;; Install cland, pylsp e etc
 (require 'lsp-mode)
 (add-hook 'c-mode-hook 'lsp)
 (add-hook 'c++-mode-hook 'lsp)
@@ -193,16 +191,7 @@ Missing packages are installed automatically."
 (setq lsp-pylsp-plugins-pydocstyle-enabled nil)
 (setq lsp-pylsp-plugins-flake8-max-line-length 200)
 
-;; latex config
-(add-to-list 'load-path "/path/to/lsp-latex")
-(require 'lsp-latex)
-
-(with-eval-after-load "tex-mode"
- (add-hook 'tex-mode-hook 'lsp)
- (add-hook 'latex-mode-hook 'lsp))
-
-(with-eval-after-load "yatex"
- (add-hook 'yatex-mode-hook 'lsp))
+;; TODO: LaTeX config
 
 (require 'company)
 (global-company-mode)
