@@ -147,8 +147,8 @@ Missing packages are installed automatically."
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; Themes
-(load-theme 'gruber-darker t)
-;; (load-theme 'doom-monokai-classic t)
+;; (load-theme 'gruber-darker t)
+(load-theme 'doom-monokai-classic t)
 ;; (load-theme 'doom-molokai t)
 
 ;; Packages configuration
