@@ -123,6 +123,7 @@ Missing packages are installed automatically."
 
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
+(setq ido-use-url-at-point t)
 (ido-mode 1)
 
 (setq ring-bell-function 'ignore)
@@ -135,21 +136,23 @@ Missing packages are installed automatically."
 (setq auto-save-default nil) ; stop creating #autosave# files
 (setq org-startup-indented t)
 (put 'dired-find-alternate-file 'disabled nil)
+(setq dired-listing-switches "-aBhl  --group-directories-first")
 
 ;; Disable line numbers in some modes
 (dolist (mode '(org-mode-hook
                 term-mode-hook
                 shell-mode-hook
                 eshell-mode-hook
-				markdown-mode-hook
-				neotree-mode-hook
-				dired-mode-hook))
+		markdown-mode-hook
+		neotree-mode-hook
+		dired-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; Themes
-;; (load-theme 'gruber-darker t)
-(load-theme 'doom-monokai-classic t)
+(load-theme 'gruber-darker t)
+;; (load-theme 'doom-monokai-classic t)
 ;; (load-theme 'doom-molokai t)
+;; (load-theme 'doom-plain-dark t)
 
 ;; Packages configuration
 (require 'smex)
@@ -172,7 +175,7 @@ Missing packages are installed automatically."
 (doom-modeline-mode 1)
 (doom-modeline-def-modeline 'main
  '(bar window-number matches buffer-info remote-host buffer-position selection-info)
- '(objed-state misc-info persp-name irc mu4e github debug input-method buffer-encoding lsp major-mode process vcs checker "  "))
+ '(objed-state misc-info persp-name irc mu4e github debug input-method buffer-encoding lsp major-mode process vcs "  "))
 
 ;; Remember to install language servers
 (require 'lsp-mode)
@@ -197,30 +200,11 @@ Missing packages are installed automatically."
 (global-company-mode)
 (setq company-format-margin-function nil)
 
-(require 'neotree)
-(add-hook 'neotree-mode-hook 'doom-modeline-mode)
-(add-hook 'neotree-mode-hook 'hl-line-mode)
-(global-set-key [f8] 'neotree-toggle)
-(setq neo-smart-open t)
-(setq neo-theme 'nerd)
-
-(require 'web-mode)
-(add-hook 'web-mode-hook (lambda () (whitespace-mode -1)))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
-(setq web-mode-engines-alist '(("django" . "\\.html\\'")))
-
-(setq web-mode-markup-indent-offset 4)
-(setq web-mode-css-indent-offset 2)
-(setq web-mode-code-indent-offset 4)
-(local-set-key (kbd "RET") 'newline-and-indent)
-
 ;; Custom keybindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-;; (global-set-key (kbd "M-p") 'move-line-up)
-;; (global-set-key (kbd "M-n") 'move-line-down)
+(global-set-key (kbd "M-p") 'move-line-up)
+(global-set-key (kbd "M-n") 'move-line-down)
 (global-set-key (kbd "M-*") 'compile)
-(global-set-key (kbd "C-x n") 'make-empty-file)
 (global-set-key (kbd "C-j") 'duplicate-line)
 (global-set-key (kbd "C-x 6") 'enlarge-window)
 (global-set-key (kbd "C-x 7") 'shrink-window)

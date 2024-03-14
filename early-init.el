@@ -9,10 +9,8 @@
     lua-mode
     markdown-mode
     markdown-preview-mode
-    neotree
     python-mode
     smex
-    web-mode
     yasnippet)
   "List of packages to be installed for the Emacs config to work as configured")
 
