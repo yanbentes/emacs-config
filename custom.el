@@ -33,7 +33,7 @@
  '(magit-diff-use-overlays nil)
  '(objed-cursor-color "#ea3d54")
  '(package-selected-packages
-   '(ein auctex buffer-move markdown-preview-mode arduino-mode doom-themes all-the-icons company lsp-mode dumb-jump doom-modeline cmake-mode yasnippet smex python-mode markdown-mode lua-mode gruber-darker-theme))
+   '(neotree kanagawa-theme ein auctex buffer-move markdown-preview-mode arduino-mode doom-themes all-the-icons company lsp-mode dumb-jump doom-modeline cmake-mode yasnippet smex python-mode markdown-mode lua-mode gruber-darker-theme))
  '(pdf-view-midnight-colors '("#FDF4C1" . "#282828"))
  '(pos-tip-background-color "#FFFACE")
  '(pos-tip-foreground-color "#272822")

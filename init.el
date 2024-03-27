@@ -118,6 +118,7 @@ Missing packages are installed automatically."
 (line-number-mode 1)
 (column-number-mode 1)
 (delete-selection-mode 1)
+(show-paren-mode 1)
 (set-face-foreground 'vertical-border "#282828")
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 
@@ -151,8 +152,8 @@ Missing packages are installed automatically."
 ;; Themes
 (load-theme 'gruber-darker t)
 ;; (load-theme 'doom-monokai-classic t)
-;; (load-theme 'doom-molokai t)
-;; (load-theme 'doom-plain-dark t)
+;; (load-theme 'doom-molokai
+;; (load-theme 'doom-old-hope t)
 
 ;; Packages configuration
 (require 'smex)
@@ -199,6 +200,10 @@ Missing packages are installed automatically."
 (require 'company)
 (global-company-mode)
 (setq company-format-margin-function nil)
+
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+(setq neo-theme (if (display-graphic-p) 'nerd))
 
 ;; Custom keybindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
