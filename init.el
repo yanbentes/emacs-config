@@ -152,8 +152,9 @@ Missing packages are installed automatically."
 ;; Themes
 (load-theme 'gruber-darker t)
 ;; (load-theme 'doom-monokai-classic t)
-;; (load-theme 'doom-molokai
+;; (load-theme 'doom-molokai t)
 ;; (load-theme 'doom-old-hope t)
+;; (load-theme 'flatland t)
 
 ;; Packages configuration
 (require 'smex)
